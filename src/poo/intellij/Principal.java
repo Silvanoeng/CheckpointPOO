@@ -18,8 +18,9 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||    01 - Clientes                      ||");
         System.out.println("||    02 - Livros                        ||");
-        System.out.println("||    03 - Imprimir lista de Clientes    ||");
-        System.out.println("||    04 - Imprimir lista de Livros      ||");
+        System.out.println("||    03 - Pedidos                       ||");
+        System.out.println("||    04 - Imprimir lista de Clientes    ||");
+        System.out.println("||    05 - Imprimir lista de Livros      ||");
         System.out.println("||    99 - Sair                          ||");
         System.out.println("*******************************************");
     }
@@ -76,10 +77,10 @@ public class Principal {
     private void pedidos(){
         System.out.println("\n");
         System.out.println("*******************************************");
-        System.out.println("||  >>>   Menu de Pedidos   <<   ||");
+        System.out.println("||      >>>   Menu de Pedidos   <<       ||");
         System.out.println("*******************************************");
-        System.out.println("||         01 - Cadastrar Pedido          ||");
-        System.out.println("||         02 - Editar Pedido             ||");
+        System.out.println("||         01 - Cadastrar Pedido         ||");
+        System.out.println("||         02 - Editar Pedido            ||");
         System.out.println("||         03 - Voltar                   ||");
         System.out.println("||         99 - Sair                     ||");
         System.out.println("*******************************************");
