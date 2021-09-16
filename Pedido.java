@@ -9,9 +9,8 @@ public class Pedido {
     private LocalDate data;
     private String status;
 
-    public Pedido(Cliente cliente, ItemPedido[] itens, LocalDate data, String status) {
+    public Pedido(Cliente cliente, LocalDate data, String status) {
         this.cliente = cliente;
-        this.itens = itens;
         this.data = data;
         this.status = status;
     }
@@ -47,8 +46,9 @@ public class Pedido {
     public void setStatus(String status) {
         this.status = status;
     }
-    public float calcularTotalPedido(){
-        float total = 0;
+
+    public double calcularTotalPedido(ItemPedido[] itens){
+        double total = 0;
         for (ItemPedido item : itens) {
             total = total + item.calcularTotalItem();
         }
