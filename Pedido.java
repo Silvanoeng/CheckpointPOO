@@ -45,12 +45,9 @@ public class Pedido {
     public void setStatus(String status) {
         this.status = status;
     }
-<<<<<<< HEAD
 
     public double calcularTotalPedido(ItemPedido[] itens){
-=======
-    public double calcularTotalPedido(){
->>>>>>> 090191e34dae1859826257ee71a4b8e116d588cc
+
         double total = 0;
         for (ItemPedido item : itens) {
             total = total + item.calcularTotalItem();
