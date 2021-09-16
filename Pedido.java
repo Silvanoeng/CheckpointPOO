@@ -5,11 +5,11 @@ import java.time.LocalDate;
 
 public class Pedido {
     private Cliente cliente;
-    private ItemVenda[] itens;
+    private ItemPedido[] itens;
     private LocalDate data;
     private String status;
 
-    public Pedido(Cliente cliente, ItemVenda[] itens, LocalDate data, String status) {
+    public Pedido(Cliente cliente, ItemPedido[] itens, LocalDate data, String status) {
         this.cliente = cliente;
         this.itens = itens;
         this.data = data;
@@ -24,11 +24,11 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public ItemVenda[] getItens() {
+    public ItemPedido[] getItens() {
         return itens;
     }
 
-    public void setItens(ItemVenda[] itens) {
+    public void setItens(ItemPedido[] itens) {
         this.itens = itens;
     }
 
@@ -49,8 +49,8 @@ public class Pedido {
     }
     public float calcularTotalPedido(){
         float total = 0;
-        for (ItemVenda item : itens) {
-            total = valor + item.calcularTotalItem();
+        for (ItemPedido item : itens) {
+            total = total + item.calcularTotalItem();
         }
         return total;
     }

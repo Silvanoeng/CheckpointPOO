@@ -1,4 +1,4 @@
-package POO.Trabalho;
+package POO.TrabalhoFinal;
 
 public class Cliente {
 
@@ -27,16 +27,16 @@ public class Cliente {
     }
 
     public boolean isCadastroAtivo() {
-        return cadastroAtivo;
+        return cadastro;
     }
 
     public void setCadastro(boolean situacao) {
         this.cadastro = situacao;
         String resposta;
         if (this.cadastro){
-            resposta="ativo"
+            resposta="ativo";
         } else {
-            resposta="cancelado"
+            resposta="cancelado";
         }
         System.out.println("O cliente "+this.nome+" esta com o seu cadastro "+resposta+".");
     }

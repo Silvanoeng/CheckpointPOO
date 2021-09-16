@@ -1,15 +1,15 @@
-package POO.Trabalho;
+package POO.TrabalhoFinal;
 
 public class ItemPedido {
-    private int quantidade;
+    private double quantidade;
     private Livro livro;
 
-    public ItemPedido(int quantidade, Livro livro) {
+    public ItemPedido(double quantidade, Livro livro) {
         this.quantidade = quantidade;
         this.livro = livro;
     }
 
-    public int getQuantidade() {
+    public double getQuantidade() {
         return quantidade;
     }
 
@@ -25,7 +25,7 @@ public class ItemPedido {
         this.livro = livro;
     }
 
-    public float calcularTotalItem(){
-        return quantidade * produto.getValor();
+    public double calcularTotalItem(){
+        return quantidade * livro.calcPreco();
     }
 }

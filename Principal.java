@@ -1,4 +1,6 @@
-package POO.Trabalho;
+package POO.TrabalhoFinal;
+
+import POO.TrabalhoFinal.LivroComum;
 
 import java.util.ArrayList;
 import java.util.List;

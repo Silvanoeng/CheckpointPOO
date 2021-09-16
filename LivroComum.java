@@ -3,7 +3,8 @@ package POO.TrabalhoFinal;
 public class LivroComum extends Livro implements Comparable <LivroComum>{
     private int indiceRaridade;
 
-    public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao, int qntdEstoque, double valorTabela, double valorAdicional, int indiceRaridade) {
+    public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao,
+                      int qntdEstoque, double valorTabela, double valorAdicional, int indiceRaridade) {
         super(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
         this.indiceRaridade = indiceRaridade;
     }
