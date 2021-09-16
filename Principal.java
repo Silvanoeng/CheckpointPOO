@@ -12,27 +12,39 @@ public class Principal {
 
     private void exibirMenu(){
         System.out.println("\n");
-        System.out.println("***********************************************");
-        System.out.println("||        >>>   Menu de Opções   <<<         ||");
-        System.out.println("***********************************************");
-        System.out.println("||    01 - Cadastrar Cliente                 ||");
-        System.out.println("||    02 - Cadastrar Livros                  ||");
-        System.out.println("||    03 - Imprimir relatório de Clientes    ||");
-        System.out.println("||    04 - Imprimir relatório de Livros      ||");
-        System.out.println("||    99 - Sair                              ||");
-        System.out.println("***********************************************");
+        System.out.println("*******************************************");
+        System.out.println("||      >>>   Menu de Opções   <<<       ||");
+        System.out.println("*******************************************");
+        System.out.println("||    01 - Clientes                      ||");
+        System.out.println("||    02 - Livros                        ||");
+        System.out.println("||    03 - Imprimir lista de Clientes    ||");
+        System.out.println("||    04 - Imprimir lista de Livros      ||");
+        System.out.println("||    99 - Sair                          ||");
+        System.out.println("*******************************************");
+    }
+    private void exibirClientes(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||      >>>   Menu de Clientes   <<      ||");
+        System.out.println("*******************************************");
+        System.out.println("||        01 - Cadastrar Cliente         ||");
+        System.out.println("||        02 - Editar Cliente            ||");
+        System.out.println("||        03 - Pedidos do Cliente        ||");
+        System.out.println("||        04 - Voltar                    ||");
+        System.out.println("||        99 - Sair                      ||");
+        System.out.println("*******************************************");
     }
 
     private void exibirLivros(){
         System.out.println("\n");
-        System.out.println("***********************************************");
-        System.out.println("||        >>>   Menu de Livros   <<<         ||");
-        System.out.println("***********************************************");
-        System.out.println("||    01 - Literatura Nacional               ||");
-        System.out.println("||    02 - Literatura Estrangeira            ||");
-        System.out.println("||    03 - Voltar                            ||");
-        System.out.println("||    99 - Sair                              ||");
-        System.out.println("***********************************************");
+        System.out.println("*******************************************");
+        System.out.println("||       >>>   Menu de Livros   <<       ||");
+        System.out.println("*******************************************");
+        System.out.println("||         01 - Livros Tecnicos          ||");
+        System.out.println("||         02 - Livros Comuns            ||");
+        System.out.println("||         03 - Voltar                   ||");
+        System.out.println("||         99 - Sair                     ||");
+        System.out.println("*******************************************");
     }
 
     private void cadastrarCliente(){
