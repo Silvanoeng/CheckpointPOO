@@ -28,4 +28,24 @@ public abstract class Livro {
     public double getValorTabela() {
         return valorTabela;
     }
+
+    public int getIdLivro() {
+        return idLivro;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
 }

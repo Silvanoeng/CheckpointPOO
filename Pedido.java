@@ -1,6 +1,5 @@
 package POO.TrabalhoFinal;
 
-import java.sql.SQLClientInfoException;
 import java.time.LocalDate;
 
 public class Pedido {
@@ -47,8 +46,8 @@ public class Pedido {
     public void setStatus(String status) {
         this.status = status;
     }
-    public float calcularTotalPedido(){
-        float total = 0;
+    public double calcularTotalPedido(){
+        double total = 0;
         for (ItemPedido item : itens) {
             total = total + item.calcularTotalItem();
         }

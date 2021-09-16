@@ -1,10 +1,9 @@
 package POO.TrabalhoFinal;
 
-public class LivroComum extends Livro implements Comparable <LivroComum>{
+public class LivroComum extends Livro implements Comparable <LivroComum> {
     private int indiceRaridade;
 
-    public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao,
-                      int qntdEstoque, double valorTabela) {
+    public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao, int qntdEstoque, double valorTabela) {
         super(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
     }
 
@@ -33,7 +32,7 @@ public class LivroComum extends Livro implements Comparable <LivroComum>{
     @Override
     public int compareTo(LivroComum livroComum){
         if(this.indiceRaridade == livroComum.getIndiceRaridade()){
-            System.out.println("Esses livros são igualmente raros.");
+            System.out.println("Ambos os livros são igualmente raros.");
             return 0;
         } else if(this.indiceRaridade > livroComum.getIndiceRaridade()){
             System.out.println("Esse livro é mais raro, portanto, não espere para comprá-lo, pois não há muitos no estoque.");
@@ -43,7 +42,5 @@ public class LivroComum extends Livro implements Comparable <LivroComum>{
             return -1;
         }
     }
-
-
 
 }

@@ -75,6 +75,18 @@ public class Principal {
         System.out.println("*******************************************");
     }
 
+    private void pedidos(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||  >>>   Menu de Pedidos   <<   ||");
+        System.out.println("*******************************************");
+        System.out.println("||         01 - Cadastrar Pedido          ||");
+        System.out.println("||         02 - Editar Pedido             ||");
+        System.out.println("||         03 - Voltar                   ||");
+        System.out.println("||         99 - Sair                     ||");
+        System.out.println("*******************************************");
+    }
+
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
 
@@ -94,8 +106,8 @@ public class Principal {
         Cliente cliente = new Cliente(id,nome,email,cadastro);
 
         clientes.add(cliente);
-
     }
+
     private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
 
@@ -114,7 +126,7 @@ public class Principal {
         leitor.nextLine();// limpa o scanner
         String editora = leitor.nextLine();
 
-        System.out.print("Nome do autor: ");
+        System.out.print("Ano de publicação: ");
         leitor.nextLine();// limpa o scanner
         int anoPublicacao = leitor.nextInt();
 
@@ -126,11 +138,9 @@ public class Principal {
         leitor.nextLine();// limpa o scanner
         double valorTabela = leitor.nextDouble();
 
-        LivroComum livro = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao,
-        qntdEstoque, valorTabela);
+        LivroComum livro = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
         livro.setIndiceRaridade(livro.calcIndiceRaridade());
         livrosComuns.add(livro);
-
     }
 
     private void cadastrarLivroTecnico(){
@@ -151,7 +161,7 @@ public class Principal {
         leitor.nextLine();// limpa o scanner
         String editora = leitor.nextLine();
 
-        System.out.print("Nome do autor: ");
+        System.out.print("Ano de publicação: ");
         leitor.nextLine();// limpa o scanner
         int anoPublicacao = leitor.nextInt();
 
@@ -167,12 +177,31 @@ public class Principal {
         leitor.nextLine();// limpa o scanner
         double valorAdicional = leitor.nextDouble();
 
-        LivroTecnico livro = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao,
-                qntdEstoque, valorTabela, valorAdicional);
+        LivroTecnico livro = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
 
         livrosTecnicos.add(livro);
-
     }
+
+//    private void cadastrarPedido(){
+//        Scanner leitor = new Scanner(System.in);
+//
+//        System.out.print("ID do cliente: ");
+//        int id = leitor.nextInt();
+//
+//        System.out.print("Nome do cliente: ");
+//        leitor.nextLine();// limpa o scanner
+//        String nome = leitor.nextLine();
+//
+//        System.out.print("E-mail: ");
+//        leitor.nextLine();// limpa o scanner
+//        String email = leitor.nextLine();
+//
+//        boolean cadastro = true;
+//
+//        Cliente cliente = new Cliente(id,nome,email,cadastro);
+//
+//        clientes.add(cliente);
+//    }
 
     private void imprimirCliente(){
         for(Cliente cliente : clientes){
@@ -182,22 +211,34 @@ public class Principal {
             cliente.situacaoCadastro();
         }
     }
-//    private void imprimirLivrosNacionais(){
-//        for(LiteraturaNacional nacional : livrosNacionais){
-//            System.out.println("\nId: " + nacional.getIdLivro());
-//            System.out.println("Nome: " + nacional.getNome());
-//            System.out.println("Autor: " + nacional.getAutor());
-//            System.out.println("Categoria: " + nacional.getCategoria());
-//        }
-//    }
-//    private void imprimirLivrosEstrangeiros(){
-//        for(LiteraturaEstrangeira internacional  : livrosInternacionais){
-//            System.out.println("\nId: " + internacional.getIdLivro());
-//            System.out.println("Nome: " + internacional.getNome());
-//            System.out.println("Autor: " + internacional.getAutor());
-//            System.out.println("Categoria: " + internacional.getCategoria());
-//        }
-//    }
+
+    private void imprimirLivroComum(){
+        for(LivroComum livroComum : livrosComuns){
+            System.out.println("\nId do Livro: " + livroComum.getIdLivro());
+            System.out.println("Título: " + livroComum.getTitulo());
+            System.out.println("Autor(a): " + livroComum.getAutor());
+            System.out.println("Editora: " + livroComum.getEditora());
+            System.out.println("Ano de publicação: " + livroComum.getAnoPublicacao());
+            System.out.println("Quantidade em estoque: " + livroComum.getQntdEstoque());
+            System.out.println("Valor: " + livroComum.getValorTabela());
+            livroComum.getIndiceRaridade();
+        }
+    }
+
+    private void imprimirLivroTecnico(){
+        for(LivroTecnico livroTecnico : livrosTecnicos){
+            System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
+            System.out.println("Título: " + livroTecnico.getTitulo());
+            System.out.println("Autor(a): " + livroTecnico.getAutor());
+            System.out.println("Editora: " + livroTecnico.getEditora());
+            System.out.println("Ano de publicação: " + livroTecnico.getAnoPublicacao());
+            System.out.println("Quantidade em estoque: " + livroTecnico.getQntdEstoque());
+            System.out.println("Valor: " + livroTecnico.getValorTabela());
+            System.out.println("Valor adicional: " + livroTecnico.getValorAdicional());
+        }
+    }
+
+
 
     public static void main(String[] args) {
         short opcao = 50;

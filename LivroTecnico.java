@@ -13,5 +13,7 @@ public class LivroTecnico extends Livro {
         return this.getValorTabela() + this.valorAdicional;
     }
 
-
+    public double getValorAdicional() {
+        return valorAdicional;
+    }
 }
