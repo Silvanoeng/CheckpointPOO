@@ -79,99 +79,127 @@ public class Principal {
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("ID do cliente: ");
-        int idCliente = leitor.nextInt();
+        int id = leitor.nextInt();
 
         System.out.print("Nome do cliente: ");
         leitor.nextLine();// limpa o scanner
-        String nomeCliente = leitor.nextLine();
+        String nome = leitor.nextLine();
 
-        System.out.print("CPF: ");
-        int cpf = leitor.nextInt();
-
-        System.out.print("Agora vamos cadastrar o endereço.\n");
-        System.out.print("Rua: ");
+        System.out.print("E-mail: ");
         leitor.nextLine();// limpa o scanner
-        String rua = leitor.nextLine();
+        String email = leitor.nextLine();
 
-        System.out.print("Número: ");
-        int numero = leitor.nextInt();
+        boolean cadastro = true;
 
-        System.out.print("Cep: ");
-        int cep = leitor.nextInt();
-
-        Cliente cliente = new Cliente(idCliente,nomeCliente,cpf,rua,numero,cep);
+        Cliente cliente = new Cliente(id,nome,email,cadastro);
 
         clientes.add(cliente);
 
     }
-    private void cadastrarLivrosNacionais(){
+    private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("ID do livro: ");
         int idLivro = leitor.nextInt();
 
-        System.out.print("Nome do livro: ");
+        System.out.print("Titulo do livro: ");
         leitor.nextLine();// limpa o scanner
-        String nome = leitor.nextLine();
+        String titulo = leitor.nextLine();
 
         System.out.print("Nome do autor: ");
         leitor.nextLine();// limpa o scanner
         String autor = leitor.nextLine();
 
-        LiteraturaNacional nacional = new LiteraturaNacional(idLivro, nome, autor);
+        System.out.print("Nome da editora: ");
+        leitor.nextLine();// limpa o scanner
+        String editora = leitor.nextLine();
 
-        livrosNacionais.add(nacional);
+        System.out.print("Nome do autor: ");
+        leitor.nextLine();// limpa o scanner
+        int anoPublicacao = leitor.nextInt();
+
+        System.out.print("Quantidade em estoque: ");
+        leitor.nextLine();// limpa o scanner
+        int qntdEstoque = leitor.nextInt();
+
+        System.out.print("Valor: ");
+        leitor.nextLine();// limpa o scanner
+        double valorTabela = leitor.nextDouble();
+
+        LivroComum livro = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao,
+        qntdEstoque, valorTabela);
+        livro.setIndiceRaridade(livro.calcIndiceRaridade());
+        livrosComuns.add(livro);
 
     }
 
-    private void cadastrarLivrosEstrangeiros(){
+    private void cadastrarLivroTecnico(){
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("ID do livro: ");
         int idLivro = leitor.nextInt();
 
-        System.out.print("Nome do livro: ");
+        System.out.print("Titulo do livro: ");
         leitor.nextLine();// limpa o scanner
-        String nome = leitor.nextLine();
+        String titulo = leitor.nextLine();
 
         System.out.print("Nome do autor: ");
         leitor.nextLine();// limpa o scanner
         String autor = leitor.nextLine();
 
-        LiteraturaEstrangeira internacional = new LiteraturaEstrangeira(idLivro, nome, autor);
+        System.out.print("Nome da editora: ");
+        leitor.nextLine();// limpa o scanner
+        String editora = leitor.nextLine();
 
-        livrosInternacionais.add(internacional);
+        System.out.print("Nome do autor: ");
+        leitor.nextLine();// limpa o scanner
+        int anoPublicacao = leitor.nextInt();
+
+        System.out.print("Quantidade em estoque: ");
+        leitor.nextLine();// limpa o scanner
+        int qntdEstoque = leitor.nextInt();
+
+        System.out.print("Valor: ");
+        leitor.nextLine();// limpa o scanner
+        double valorTabela = leitor.nextDouble();
+
+        System.out.print("Valor adicional: ");
+        leitor.nextLine();// limpa o scanner
+        double valorAdicional = leitor.nextDouble();
+
+        LivroTecnico livro = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao,
+                qntdEstoque, valorTabela, valorAdicional);
+
+        livrosTecnicos.add(livro);
 
     }
 
     private void imprimirCliente(){
         for(Cliente cliente : clientes){
-            System.out.println("\nId: " + cliente.getIdCliente());
-            System.out.println("Nome: " + cliente.getNomeCliente());
-            System.out.println("Nome: " + cliente.getCpf());
-            System.out.println("Nome: " + cliente.getRua());
-            System.out.println("Nome: " + cliente.getNumero());
-            System.out.println("Nome: " + cliente.getCep());
+            System.out.println("\nId: " + cliente.getId());
+            System.out.println("Nome: " + cliente.getNome());
+            System.out.println("E-mail: " + cliente.getEmail());
+            cliente.situacaoCadastro();
         }
     }
-    private void imprimirLivrosNacionais(){
-        for(LiteraturaNacional nacional : livrosNacionais){
-            System.out.println("\nId: " + nacional.getIdLivro());
-            System.out.println("Nome: " + nacional.getNome());
-            System.out.println("Autor: " + nacional.getAutor());
-            System.out.println("Categoria: " + nacional.getCategoria());
-        }
-    }
-    private void imprimirLivrosEstrangeiros(){
-        for(LiteraturaEstrangeira internacional  : livrosInternacionais){
-            System.out.println("\nId: " + internacional.getIdLivro());
-            System.out.println("Nome: " + internacional.getNome());
-            System.out.println("Autor: " + internacional.getAutor());
-            System.out.println("Categoria: " + internacional.getCategoria());
-        }
-    }
+//    private void imprimirLivrosNacionais(){
+//        for(LiteraturaNacional nacional : livrosNacionais){
+//            System.out.println("\nId: " + nacional.getIdLivro());
+//            System.out.println("Nome: " + nacional.getNome());
+//            System.out.println("Autor: " + nacional.getAutor());
+//            System.out.println("Categoria: " + nacional.getCategoria());
+//        }
+//    }
+//    private void imprimirLivrosEstrangeiros(){
+//        for(LiteraturaEstrangeira internacional  : livrosInternacionais){
+//            System.out.println("\nId: " + internacional.getIdLivro());
+//            System.out.println("Nome: " + internacional.getNome());
+//            System.out.println("Autor: " + internacional.getAutor());
+//            System.out.println("Categoria: " + internacional.getCategoria());
+//        }
+//    }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         short opcao = 50;
         short opcaoLivros =50;
         Scanner leitor = new Scanner(System.in);
@@ -196,10 +224,10 @@ public class Principal {
 
                         switch (opcaoLivros) {
                             case 1:
-                                menu.cadastrarLivrosNacionais();
+                                menu.cadastrarLivroTecnico();
                                 break;
                             case 2:
-                                menu.cadastrarLivrosEstrangeiros();
+                                menu.cadastrarLivroComum();
                                 break;
                             case 3:
                                 opcaoLivros = 99;
@@ -226,8 +254,8 @@ public class Principal {
                     menu.imprimirCliente();
                     break;
                 case 4:
-                    menu.imprimirLivrosNacionais();
-                    menu.imprimirLivrosEstrangeiros();
+                    menu.imprimirCliente();
+                    menu.imprimirCliente();
                     break;
                 case 50:
                     menu.exibirMenu();

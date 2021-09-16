@@ -4,8 +4,11 @@ public class LivroComum extends Livro implements Comparable <LivroComum>{
     private int indiceRaridade;
 
     public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao,
-                      int qntdEstoque, double valorTabela, double valorAdicional, int indiceRaridade) {
+                      int qntdEstoque, double valorTabela) {
         super(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
+    }
+
+    public void setIndiceRaridade(int indiceRaridade) {
         this.indiceRaridade = indiceRaridade;
     }
 

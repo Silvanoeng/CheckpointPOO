@@ -26,8 +26,15 @@ public class Cliente {
         return email;
     }
 
-    public boolean isCadastroAtivo() {
-        return cadastro;
+
+    public void situacaoCadastro() {
+        String resposta;
+        if (this.cadastro){
+            resposta="ativo";
+        } else {
+            resposta="cancelado";
+        }
+        System.out.println("O cliente "+this.nome+" esta com o seu cadastro "+resposta+".");
     }
 
     public void setCadastro(boolean situacao) {
