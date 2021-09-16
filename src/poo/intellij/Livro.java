@@ -1,4 +1,4 @@
-package POO.TrabalhoFinal;
+package poo.intellij;
 
 public abstract class Livro {
     private int idLivro;

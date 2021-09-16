@@ -1,6 +1,4 @@
-package POO.TrabalhoFinal;
-
-import POO.TrabalhoFinal.LivroComum;
+package poo.intellij;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,9 +96,9 @@ public class Principal {
         String nome = leitor.nextLine();
 
         System.out.print("E-mail: ");
-        leitor.nextLine();// limpa o scanner
-        String email = leitor.nextLine();
+        String email = leitor.next();
 
+        System.out.print("O cadastro de "+nome+" esta ativo.");
         boolean cadastro = true;
 
         Cliente cliente = new Cliente(id,nome,email,cadastro);
@@ -127,15 +125,12 @@ public class Principal {
         String editora = leitor.nextLine();
 
         System.out.print("Ano de publicação: ");
-        leitor.nextLine();// limpa o scanner
         int anoPublicacao = leitor.nextInt();
 
         System.out.print("Quantidade em estoque: ");
-        leitor.nextLine();// limpa o scanner
         int qntdEstoque = leitor.nextInt();
 
         System.out.print("Valor: ");
-        leitor.nextLine();// limpa o scanner
         double valorTabela = leitor.nextDouble();
 
         LivroComum livro = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
@@ -162,46 +157,21 @@ public class Principal {
         String editora = leitor.nextLine();
 
         System.out.print("Ano de publicação: ");
-        leitor.nextLine();// limpa o scanner
         int anoPublicacao = leitor.nextInt();
 
         System.out.print("Quantidade em estoque: ");
-        leitor.nextLine();// limpa o scanner
         int qntdEstoque = leitor.nextInt();
 
         System.out.print("Valor: ");
-        leitor.nextLine();// limpa o scanner
         double valorTabela = leitor.nextDouble();
 
         System.out.print("Valor adicional: ");
-        leitor.nextLine();// limpa o scanner
         double valorAdicional = leitor.nextDouble();
 
         LivroTecnico livro = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
 
         livrosTecnicos.add(livro);
     }
-
-//    private void cadastrarPedido(){
-//        Scanner leitor = new Scanner(System.in);
-//
-//        System.out.print("ID do cliente: ");
-//        int id = leitor.nextInt();
-//
-//        System.out.print("Nome do cliente: ");
-//        leitor.nextLine();// limpa o scanner
-//        String nome = leitor.nextLine();
-//
-//        System.out.print("E-mail: ");
-//        leitor.nextLine();// limpa o scanner
-//        String email = leitor.nextLine();
-//
-//        boolean cadastro = true;
-//
-//        Cliente cliente = new Cliente(id,nome,email,cadastro);
-//
-//        clientes.add(cliente);
-//    }
 
     private void imprimirCliente(){
         for(Cliente cliente : clientes){
@@ -282,8 +252,8 @@ public class Principal {
                                 if(confirmaSair>1){
                                     opcaoLivros=50;
                                 } else {
-                                System.out.print("Programa finalizado.");
-                                opcao = 99;
+                                    System.out.print("Programa finalizado.");
+                                    opcao = 99;
                                 }
                                 break;
                             default:

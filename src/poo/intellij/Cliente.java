@@ -1,4 +1,4 @@
-package POO.TrabalhoFinal;
+package poo.intellij;
 
 public class Cliente {
 

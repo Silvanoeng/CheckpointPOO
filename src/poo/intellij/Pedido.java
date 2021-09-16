@@ -1,4 +1,4 @@
-package POO.TrabalhoFinal;
+package poo.intellij;
 
 import java.time.LocalDate;
 
