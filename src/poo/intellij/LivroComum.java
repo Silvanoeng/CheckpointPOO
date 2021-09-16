@@ -11,13 +11,13 @@ public class LivroComum extends Livro implements Comparable <LivroComum> {
         this.indiceRaridade = indiceRaridade;
     }
 
-    public int calcIndiceRaridade(){
+    public void calcIndiceRaridade(){
         if (this.getQntdEstoque() < 10)
-            return 6;
+            setIndiceRaridade (6);
         else if (this.getQntdEstoque() >= 10 && this.getQntdEstoque() < 500)
-            return 4;
+            setIndiceRaridade (4);
         else
-            return 0;
+            setIndiceRaridade (0);
     }
 
     @Override

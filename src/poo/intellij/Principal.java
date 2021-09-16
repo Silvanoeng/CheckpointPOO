@@ -87,6 +87,37 @@ public class Principal {
 
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
+        System.out.print("Quantos clientes você deseja cadastrar: ");
+        int qtdContas = leitor.nextInt();
+
+        System.out.print("<><><><><><><><><><><><><><><><><><>");
+
+        for(int i=1; i<=qtdContas;i++) {
+
+            System.out.print("ID do cliente: ");
+            int id = leitor.nextInt();
+
+            System.out.print("Nome do cliente: ");
+            leitor.nextLine();// limpa o scanner
+            String nome = leitor.nextLine();
+
+            System.out.print("E-mail: ");
+            String email = leitor.next();
+
+            System.out.print("O cadastro de " + nome + " esta ativo.");
+            boolean cadastro = true;
+
+            Cliente cliente = new Cliente(id, nome, email, cadastro);
+
+            clientes.add(cliente);
+
+            System.out.print("<><><><><><><><><><><><><><><><><><>");
+
+        }
+    }
+    for(Cliente cliente : clientes){
+    private void editarCliente(){
+        Scanner leitor = new Scanner(System.in);
 
         System.out.print("ID do cliente: ");
         int id = leitor.nextInt();
@@ -133,9 +164,9 @@ public class Principal {
         System.out.print("Valor: ");
         double valorTabela = leitor.nextDouble();
 
-        LivroComum livro = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
-        livro.setIndiceRaridade(livro.calcIndiceRaridade());
-        livrosComuns.add(livro);
+        LivroComum livroComum = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
+        livroComum.calcIndiceRaridade();
+        livrosComuns.add(livroComum);
     }
 
     private void cadastrarLivroTecnico(){
@@ -168,44 +199,57 @@ public class Principal {
         System.out.print("Valor adicional: ");
         double valorAdicional = leitor.nextDouble();
 
-        LivroTecnico livro = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
+        LivroTecnico livroTecnico = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
 
-        livrosTecnicos.add(livro);
+        livrosTecnicos.add(livroTecnico);
     }
 
     private void imprimirCliente(){
-        for(Cliente cliente : clientes){
-            System.out.println("\nId: " + cliente.getId());
-            System.out.println("Nome: " + cliente.getNome());
-            System.out.println("E-mail: " + cliente.getEmail());
-            cliente.situacaoCadastro();
+
+        if (clientes.isEmpty()){
+            System.out.println("\nNão há clientes cadastrados.");
+        } else {
+            for (Cliente cliente : clientes) {
+                System.out.println("\nId: " + cliente.getId());
+                System.out.println("Nome: " + cliente.getNome());
+                System.out.println("E-mail: " + cliente.getEmail());
+                cliente.situacaoCadastro();
+            }
         }
     }
 
     private void imprimirLivroComum(){
-        for(LivroComum livroComum : livrosComuns){
-            System.out.println("\nId do Livro: " + livroComum.getIdLivro());
-            System.out.println("Título: " + livroComum.getTitulo());
-            System.out.println("Autor(a): " + livroComum.getAutor());
-            System.out.println("Editora: " + livroComum.getEditora());
-            System.out.println("Ano de publicação: " + livroComum.getAnoPublicacao());
-            System.out.println("Quantidade em estoque: " + livroComum.getQntdEstoque());
-            System.out.println("Valor: " + livroComum.getValorTabela());
-            livroComum.getIndiceRaridade();
-        }
+            if (livrosComuns.isEmpty()){
+                System.out.println("\nNão há livros comuns cadastrados.");
+            } else {
+                for (LivroComum livroComum : livrosComuns) {
+                    System.out.println("\nId do Livro: " + livroComum.getIdLivro());
+                    System.out.println("Título: " + livroComum.getTitulo());
+                    System.out.println("Autor(a): " + livroComum.getAutor());
+                    System.out.println("Editora: " + livroComum.getEditora());
+                    System.out.println("Ano de publicação: " + livroComum.getAnoPublicacao());
+                    System.out.println("Quantidade em estoque: " + livroComum.getQntdEstoque());
+                    System.out.println("Valor: " + livroComum.getValorTabela());
+                    System.out.println("Indice de raridade: " + livroComum.getIndiceRaridade());
+                }
+            }
     }
 
     private void imprimirLivroTecnico(){
-        for(LivroTecnico livroTecnico : livrosTecnicos){
-            System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
-            System.out.println("Título: " + livroTecnico.getTitulo());
-            System.out.println("Autor(a): " + livroTecnico.getAutor());
-            System.out.println("Editora: " + livroTecnico.getEditora());
-            System.out.println("Ano de publicação: " + livroTecnico.getAnoPublicacao());
-            System.out.println("Quantidade em estoque: " + livroTecnico.getQntdEstoque());
-            System.out.println("Valor: " + livroTecnico.getValorTabela());
-            System.out.println("Valor adicional: " + livroTecnico.getValorAdicional());
-        }
+            if (livrosTecnicos.isEmpty()){
+                System.out.println("\nNão há livros comuns cadastrados.");
+            } else {
+                for (LivroTecnico livroTecnico : livrosTecnicos) {
+                    System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
+                    System.out.println("Título: " + livroTecnico.getTitulo());
+                    System.out.println("Autor(a): " + livroTecnico.getAutor());
+                    System.out.println("Editora: " + livroTecnico.getEditora());
+                    System.out.println("Ano de publicação: " + livroTecnico.getAnoPublicacao());
+                    System.out.println("Quantidade em estoque: " + livroTecnico.getQntdEstoque());
+                    System.out.println("Valor: " + livroTecnico.getValorTabela());
+                    System.out.println("Valor adicional: " + livroTecnico.getValorAdicional());
+                }
+            }
     }
 
 
