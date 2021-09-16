@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class Principal {
 
     List<Cliente> clientes = new ArrayList<>();
-    List<LiteraturaNacional> livrosNacionais = new ArrayList<>();
-    List<LiteraturaEstrangeira> livrosInternacionais = new ArrayList<>();
+    List<Pedido> pedidos = new ArrayList<>();
+    List<LivroComum> livrosComuns = new ArrayList<>();
+    List<LivroTecnico> livrosTecnicos = new ArrayList<>();
 
     private void exibirMenu(){
         System.out.println("\n");
@@ -22,6 +23,7 @@ public class Principal {
         System.out.println("||    99 - Sair                          ||");
         System.out.println("*******************************************");
     }
+
     private void exibirClientes(){
         System.out.println("\n");
         System.out.println("*******************************************");
@@ -42,6 +44,30 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||         01 - Livros Tecnicos          ||");
         System.out.println("||         02 - Livros Comuns            ||");
+        System.out.println("||         03 - Voltar                   ||");
+        System.out.println("||         99 - Sair                     ||");
+        System.out.println("*******************************************");
+    }
+
+    private void livrosComuns(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||    >>>   Menu de Livros Comuns   <<   ||");
+        System.out.println("*******************************************");
+        System.out.println("||         01 - Cadastrar Livro          ||");
+        System.out.println("||         02 - Editar Livro             ||");
+        System.out.println("||         03 - Voltar                   ||");
+        System.out.println("||         99 - Sair                     ||");
+        System.out.println("*******************************************");
+    }
+
+    private void livrosTecnicos(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||  >>>   Menu de Livros Tecnicos   <<   ||");
+        System.out.println("*******************************************");
+        System.out.println("||         01 - Cadastrar Livro          ||");
+        System.out.println("||         02 - Editar Livro             ||");
         System.out.println("||         03 - Voltar                   ||");
         System.out.println("||         99 - Sair                     ||");
         System.out.println("*******************************************");
