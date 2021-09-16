@@ -34,7 +34,7 @@ public class Cliente {
         } else {
             resposta="cancelado";
         }
-        System.out.println("O cliente "+this.nome+" esta com o seu cadastro "+resposta+".");
+        System.out.println("O cliente "+this.nome+" está com o seu cadastro "+resposta+".");
     }
 
     public void setCadastro(boolean situacao) {
@@ -45,6 +45,6 @@ public class Cliente {
         } else {
             resposta="cancelado";
         }
-        System.out.println("O cliente "+this.nome+" esta com o seu cadastro "+resposta+".");
+        System.out.println("O cliente "+this.nome+" está com o seu cadastro "+resposta+".");
     }
 }
