@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Pedido {
     private Cliente cliente;
-    private List<ItemPedido> pedido = new ArrayList<> ();
+    private ArrayList<ItemPedido> pedido = new ArrayList<>();
     private LocalDate data;
     private String status;
 
@@ -29,10 +29,6 @@ public class Pedido {
         return pedido;
     }
 
-    public void setPedido(List<ItemPedido> pedido) {
-        this.pedido = pedido;
-    }
-
     public LocalDate getData() {
         return data;
     }
@@ -49,12 +45,8 @@ public class Pedido {
         this.status = status;
     }
 
-//    public double calcularTotalPedido(ItemPedido[] itens){
-//
-//        double total = 0;
-//        for (ItemPedido item : itens) {
-//            total = total + item.calcularTotalItem();
-//        }
-//        return total;
-//    }
+    public void add(ItemPedido itemPedido) {
+        pedido.add(itemPedido);
+    }
+
 }
