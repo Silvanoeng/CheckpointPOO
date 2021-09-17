@@ -136,8 +136,13 @@ public class Principal {
         } else {return false;
         }
     }
-    private void editarCliente(){
+    private Cliente pegaCliente() {
         Scanner leitor = new Scanner(System.in);
+        System.out.print("\nInforme a posição do cliente:\n");
+        int posicao = leitor.nextInt();
+        return clientes.get(posicao);
+    }
+    private void listarClientes(){
         System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = clientes.size();
         System.out.print("\nLista dos clientes.\n");
@@ -244,28 +249,94 @@ public class Principal {
         livrosTecnicos.add(livroTecnico);
     }
 
-//    private void cadastrarPedido(){
-//        Scanner leitor = new Scanner(System.in);
-//
-//        private Cliente cliente;
-//        private ItemPedido[] itens;
-//        private LocalDate data;
-//        private String status;
-//
-//        System.out.print("ID do livro: ");
-//        int id = leitor.nextInt();
-//
-//        Cliente clientePedido = teste;
-//        LocalDate data;
-//        String statusPedido;
-//
-//
-//
-//
-//        Pedido pedido = new Pedido(clientePedido, data, statusPedido);
-//
-//        pedidos.add(pedido);
-//    }
+    private boolean temLivroTecnico(){
+        if (livrosTecnicos.isEmpty()){
+            return true;
+        } else {return false;
+        }
+    }
+
+    private boolean temLivroComum(){
+        if (livrosComuns.isEmpty()){
+            return true;
+        } else {return false;
+        }
+    }
+    private void listarLivroComum(){
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        int posicaoArray = livrosComuns.size();
+        System.out.print("\nLista dos livros comuns.\n");
+        for (int i=0; i<posicaoArray; i++) {
+            System.out.printf("Posição %d- %s\n", i, livrosComuns.get(i).getTitulo());
+        }
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+    }
+
+    private LivroTecnico pegaLivroTecnico() {
+        Scanner leitor = new Scanner(System.in);
+        System.out.print("\nInforme a posição do LivroTecnico:\n");
+        int posicao = leitor.nextInt();
+        return livrosTecnicos.get(posicao);
+    }
+    private void listarLivroTecnico(){
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        int posicaoArray = livrosTecnicos.size();
+        System.out.print("\nLista dos livros tecnicos.\n");
+        for (int i=0; i<posicaoArray; i++) {
+            System.out.printf("Posição %d- %s\n", i, livrosTecnicos.get(i).getTitulo());
+        }
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+    }
+
+    private LivroComum pegaLivroComum() {
+        Scanner leitor = new Scanner(System.in);
+        System.out.print("\nInforme a posição do LivroComum:\n");
+        int posicao = leitor.nextInt();
+        return livrosComuns.get(posicao);
+    }
+
+    private void cadastrarPedido(){
+        Scanner leitor = new Scanner(System.in);
+        listarClientes();
+        Cliente clientepedido = pegaCliente();
+        Pedido pedido = new Pedido(clientepedido, LocalDate.now(),"Cadastrando");
+
+        System.out.println("\nLivro Tecnico (1) // Livro Comum (2)\n");
+
+        short escolha=50;
+        do {
+            escolha = leitor.nextShort();
+            switch (escolha) {
+                case 1:
+                    if (temLivroTecnico()) {
+                        System.out.println("\nNenhum livro tecnico cadastrado.\n");
+                    } else {
+                        listarLivroComum();
+                        LivroTecnico livro = pegaLivroTecnico();
+                        System.out.println("\nQuantas unidades?\n");
+                        int quantidade = leitor.nextInt();
+                        ItemPedido item = new ItemPedido(quantidade, livro);
+                        pedido.setPedido((List<ItemPedido>) item);
+                    }
+                case 2:
+                    if (temLivroComum()) {
+                        System.out.println("\nNenhum livro comum cadastrado.\n");
+                    } else {
+                        listarLivroTecnico();
+                        LivroComum livro = pegaLivroComum();
+                        System.out.println("\nQuantas unidades?\n");
+                        int quantidade = leitor.nextInt();
+                        ItemPedido item = new ItemPedido(quantidade, livro);
+                        pedido.setPedido((List<ItemPedido>) item);
+                    }
+                default:
+                    System.out.println("Esse número não é válido.");
+            }
+        }while (escolha!=99);
+
+        pedidos.add(pedido);
+
+    }
 
     private void imprimirCliente(){
 
@@ -352,7 +423,7 @@ public class Principal {
                                     opcaoClientes = 50;
                                 } else {
                                     opcaoClientes = 50;
-                                    menu.editarCliente();
+                                    menu.listarClientes();
                                     System.out.print("\nInforme a posição do cliente que deseja editar:\n");
                                     posicaoCliente = leitor.nextInt();
 
@@ -522,13 +593,19 @@ public class Principal {
                     break;
                 case 3:
                     do {
-                        menu.pedidos();
+
+                        if (menu.temClientes()) {
+                            System.out.print("\nNenhum cliente cadastrado.\n");
+                            opcao = 50;
+                        } else  {
+                            menu.pedidos();
+                        }
 
                         System.out.print("Opção escolhida: ");
                         opcaoPedidos = leitor.nextShort();
                         switch (opcaoPedidos) {
                             case 01:
-                                //cadastrar Pedido
+                                menu.cadastrarPedido();
                                 break;
                             case 02:
                                 //editar Pedido
