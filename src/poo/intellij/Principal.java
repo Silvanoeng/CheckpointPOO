@@ -25,6 +25,20 @@ public class Principal {
         System.out.println("*******************************************");
     }
 
+    private void editarClientes(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||      >>>   Editar Cliente   <<<       ||");
+        System.out.println("*******************************************");
+        System.out.println("||        01 - Id Cliente                ||");
+        System.out.println("||        02 - Nome                      ||");
+        System.out.println("||        03 - Email                     ||");
+        System.out.println("||        04 - Desativar Cadastro        ||");
+        System.out.println("||        05 - Voltar                    ||");
+        System.out.println("||        99 - Sair                      ||");
+        System.out.println("*******************************************");
+    }
+
     private void exibirClientes(){
         System.out.println("\n");
         System.out.println("*******************************************");
@@ -91,7 +105,7 @@ public class Principal {
         System.out.print("Quantos clientes você deseja cadastrar: ");
         int qtdContas = leitor.nextInt();
 
-        System.out.print("<><><><><><><><><><><><><><><><><><>");
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
 
         for(int i=1; i<=qtdContas;i++) {
 
@@ -112,30 +126,55 @@ public class Principal {
 
             clientes.add(cliente);
 
-            System.out.print("<><><><><><><><><><><><><><><><><><>");
+            System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
 
         }
     }
-    for(Cliente cliente : clientes){
+    private boolean temClientes(){
+        if (clientes.isEmpty()){
+        return true;
+        } else {return false;
+        }
+    }
     private void editarCliente(){
         Scanner leitor = new Scanner(System.in);
-
-        System.out.print("ID do cliente: ");
-        int id = leitor.nextInt();
-
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        int posicaoArray = clientes.size();
+        System.out.print("\nLista dos clientes.\n");
+        for (int i=0; i<posicaoArray; i++) {
+            System.out.printf("Posição %d- %s\n", i, clientes.get(i).getNome());
+        }
+        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+    }
+   private void editarId(int posicao) {
+       Scanner leitor = new Scanner(System.in);
+       System.out.print("ID do cliente: ");
+       int id = leitor.nextInt();
+       clientes.get(posicao).setId(id);
+   }
+    private void editarNome(int posicao) {
+        Scanner leitor = new Scanner(System.in);
         System.out.print("Nome do cliente: ");
         leitor.nextLine();// limpa o scanner
         String nome = leitor.nextLine();
-
+        clientes.get(posicao).setNome(nome);
+    }
+    private void editarEmail(int posicao) {
+        Scanner leitor = new Scanner(System.in);
         System.out.print("E-mail: ");
         String email = leitor.next();
-
-        System.out.print("O cadastro de "+nome+" esta ativo.");
-        boolean cadastro = true;
-
-        Cliente cliente = new Cliente(id,nome,email,cadastro);
-
-        clientes.add(cliente);
+        clientes.get(posicao).setEmail(email);
+    }
+    private void editarCadastro(int posicao) {
+        Scanner leitor = new Scanner(System.in);
+        clientes.get(posicao).situacaoCadastro();
+        System.out.print("Deixar o cadastro do cliente ativo(1) ou cancelado(2)");
+        int confirmaCadastro = leitor.nextShort();
+        if (confirmaCadastro > 1) {
+            clientes.get(posicao).setCadastro(false);
+        } else {
+            clientes.get(posicao).setCadastro(false);
+        }
     }
 
     private void cadastrarLivroComum(){
@@ -257,7 +296,10 @@ public class Principal {
 
     public static void main(String[] args) {
         short opcao = 50;
-        short opcaoLivros =50;
+        short opcaoLivros = 50;
+        short opcaoCliente = 50;
+        short opcaoEditar = 50;
+        int posicaoCliente=0;
         Scanner leitor = new Scanner(System.in);
         Principal menu = new Principal();
 
@@ -269,7 +311,94 @@ public class Principal {
 
             switch(opcao){
                 case 1:
-                    menu.cadastrarCliente();
+                    do {
+                        menu.exibirClientes();
+
+                        System.out.print("Opção escolhida: ");
+                        opcaoCliente = leitor.nextShort();
+
+                        switch (opcaoCliente) {
+                            case 1:
+                                menu.cadastrarCliente();
+                                break;
+                            case 2:
+                                if (menu.temClientes()) {
+                                    System.out.print("\nNenhum cliente cadastrado.\n");
+                                    opcaoCliente = 50;
+                                } else {
+                                    opcaoCliente = 50;
+                                    menu.editarCliente();
+                                    System.out.print("\nInforme a posição do cliente que deseja editar:\n");
+                                    posicaoCliente = leitor.nextInt();
+
+                                    do {
+                                        menu.editarClientes();
+                                        System.out.print("Opção escolhida: ");
+                                        opcaoEditar = leitor.nextShort();
+
+                                        switch (opcaoEditar) {
+                                            case 1:
+                                                menu.editarId(posicaoCliente);
+                                                break;
+                                            case 2:
+                                                menu.editarNome(posicaoCliente);
+                                                break;
+                                            case 3:
+                                                menu.editarEmail(posicaoCliente);
+                                                break;
+                                            case 4:
+                                                menu.editarCadastro(posicaoCliente);
+                                                break;
+                                            case 5:
+                                                opcaoEditar = 99;
+                                                opcaoCliente = 50;
+                                                break;
+                                            case 50:
+                                                menu.editarClientes();
+                                                break;
+                                            case 99:
+                                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                                int confirmaSair = leitor.nextShort();
+                                                if (confirmaSair > 1) {
+                                                    opcao = 50;
+                                                } else {
+                                                    System.out.print("Programa finalizado.");
+                                                    opcao = 99;
+                                                    opcaoCliente = 99;
+                                                    opcaoEditar = 99;
+                                                }
+                                                break;
+                                            default:
+                                                System.out.print("Esse número não é válido.");
+                                                menu.editarCliente();
+                                        }
+                                    } while (opcaoEditar != 99);
+                                }
+                                break;
+                            case 3:
+                                menu.pedidos();
+                                break;
+                            case 4:
+                                opcaoCliente = 99;
+                                break;
+                            case 50:
+                                menu.exibirLivros();
+                                break;
+                            case 99:
+                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                int confirmaSair = leitor.nextShort();
+                                if(confirmaSair>1){
+                                    opcaoCliente=50;
+                                } else {
+                                    System.out.print("Programa finalizado.");
+                                    opcao = 99;
+                                }
+                                break;
+                            default:
+                                System.out.print("Esse número não é válido.");
+                                menu.exibirClientes();
+                        }
+                    }while(opcaoCliente != 99);
                     break;
                 case 2:
                     do {
@@ -302,6 +431,7 @@ public class Principal {
                                 }
                                 break;
                             default:
+                                System.out.print("Esse número não é válido.");
                                 menu.exibirLivros();
                         }
                     }while(opcaoLivros != 99);
@@ -326,6 +456,7 @@ public class Principal {
                     }
                     break;
                 default:
+                    System.out.print("Esse número não é válido.");
                     menu.exibirMenu();
             }
         }while(opcao != 99);
