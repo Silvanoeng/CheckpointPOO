@@ -293,7 +293,6 @@ public class Principal {
     }
 
 
-
     public static void main(String[] args) {
         short opcao = 50;
         short opcaoLivros = 50;
