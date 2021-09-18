@@ -27,8 +27,15 @@ public class Pedido {
 
     public void mostrarPedidos() {
         for(ItemPedido item: pedido){
-            System.out.printf("%s, %d un. valor total R$ %.2f", item.getLivro().getTitulo(), item.getQuantidade(), item.calcularTotalLivro());
+            System.out.printf("%s, %d un. valor total R$ %.2f\n", item.getLivro().getTitulo(), item.getQuantidade(), item.calcularTotalLivro());
         };
+    }
+    public double valorTotalPedido() {
+        double valor = 0.00;
+        for(ItemPedido item: pedido){
+             valor += item.calcularTotalLivro();
+        };
+        return valor;
     }
 
     public LocalDate getData() {

@@ -415,6 +415,7 @@ public class Principal {
             for (Pedido pedido : pedidos) {
                 System.out.println("\nCliente: " + pedido.getCliente().getNome());
                 pedido.mostrarPedidos();
+                System.out.println("Valor total do pedido: " + pedido.valorTotalPedido());
                 System.out.println("Data do pedido: " + pedido.getData());
                 System.out.println("Situação: " + pedido.getStatus());
                 System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");

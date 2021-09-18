@@ -31,17 +31,4 @@ public class ItemPedido {
     }
 
 
-    public static void main(String[] args) {
-        LivroComum te = new LivroComum(12, "oi", "ele", "globo", 1999, 12, 100.50);
-        LivroTecnico ta = new LivroTecnico(14,"solo","Maria","la",1999,45,45.55,1.00);
-
-        ItemPedido teste = new ItemPedido(3, te);
-        ItemPedido taste = new ItemPedido(4, ta);
-
-        System.out.println(teste.calcularTotalLivro());
-        System.out.println(taste.calcularTotalLivro());
-        System.out.println(50.55);
-    }
-
-
 }
