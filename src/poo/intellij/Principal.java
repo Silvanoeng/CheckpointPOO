@@ -69,8 +69,10 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||       >>>   Menu de Livros   <<       ||");
         System.out.println("*******************************************");
-        System.out.println("||         01 - Livros Tecnicos          ||");
-        System.out.println("||         02 - Livros Comuns            ||");
+        System.out.println("||      01 - Livros Tecnicos             ||");
+        System.out.println("||      02 - Livros Comuns               ||");
+        System.out.println("||      03 - Finalizar Pedido            ||");
+        System.out.println("||      04 - Voltar                      ||");
         System.out.println("*******************************************");
     }
 
@@ -112,171 +114,175 @@ public class Principal {
 
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
-        System.out.print("Quantos clientes você deseja cadastrar: ");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("Quantos clientes você deseja cadastrar: \n");
         int qtdContas = leitor.nextInt();
 
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
 
         for(int i=1; i<=qtdContas;i++) {
 
-            System.out.print("ID do cliente: ");
+            System.out.print("ID do cliente: \n");
             int id = leitor.nextInt();
 
-            System.out.print("Nome do cliente: ");
+            System.out.print("Nome do cliente: \n");
             leitor.nextLine();// limpa o scanner
             String nome = leitor.nextLine();
 
-            System.out.print("E-mail: ");
+            System.out.print("E-mail: \n");
             String email = leitor.next();
 
-            System.out.print("O cadastro de " + nome + " esta ativo.");
+            System.out.print("O cadastro de " + nome + " esta ativo. \n");
 
             Cliente cliente = new Cliente(id, nome, email, true);
 
             clientes.add(cliente);
 
-            System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         }
     }
 
     private Cliente pegaCliente() {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\nInforme a posição do cliente:\n");
+        System.out.print("\nInforme a posição do cliente: \n");
         int posicao = leitor.nextInt();
-        leitor.close();
         return clientes.get(posicao);
     }
     private void listarClientes(){
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = clientes.size();
-        System.out.print("\nLista dos clientes.\n");
+        System.out.print("\nLista dos clientes. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d- %s\n", i, clientes.get(i).getNome());
         }
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
    private void editarId(int posicao) {
        Scanner leitor = new Scanner(System.in);
-       System.out.print("ID do cliente: ");
+       System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+       System.out.print("ID do cliente: \n");
        int id = leitor.nextInt();
        clientes.get(posicao).setId(id);
+       System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
    }
     private void editarNome(int posicao) {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("Nome do cliente: ");
-        leitor.nextLine();// limpa o scanner
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("Nome do cliente: \n");
         String nome = leitor.nextLine();
         clientes.get(posicao).setNome(nome);
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
     private void editarEmail(int posicao) {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("E-mail: ");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("E-mail: \n");
         String email = leitor.next();
         clientes.get(posicao).setEmail(email);
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
     private void editarCadastro(int posicao) {
         Scanner leitor = new Scanner(System.in);
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         clientes.get(posicao).situacaoCadastro();
-        System.out.print("\nDeixar o cadastro do cliente ativo(1) ou cancelado(2)\n");
+        System.out.print("\nCadastro do cliente ativo(1) ou cancelado(2) \n");
         int confirmaCadastro = leitor.nextShort();
         if (confirmaCadastro > 1) {
             clientes.get(posicao).setCadastro(false);
         } else {
             clientes.get(posicao).setCadastro(true);
         }
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
-
-        System.out.print("ID do livro: ");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("ID do livro: \n");
         int idLivro = leitor.nextInt();
 
-        System.out.print("Titulo do livro: ");
+        System.out.print("Titulo do livro: \n");
         leitor.nextLine();// limpa o scanner
         String titulo = leitor.nextLine();
 
-        System.out.print("Nome do autor: ");
-        leitor.nextLine();// limpa o scanner
+        System.out.print("Nome do autor: \n");
         String autor = leitor.nextLine();
 
-        System.out.print("Nome da editora: ");
-        leitor.nextLine();// limpa o scanner
+        System.out.print("Nome da editora: \n");
         String editora = leitor.nextLine();
 
-        System.out.print("Ano de publicação: ");
+        System.out.print("Ano de publicação: \n");
         int anoPublicacao = leitor.nextInt();
 
-        System.out.print("Quantidade em estoque: ");
+        System.out.print("Quantidade em estoque: \n");
         int qntdEstoque = leitor.nextInt();
 
-        System.out.print("Valor(ex. 0,00): ");
+        System.out.print("Valor(ex. 0,00): \n");
         double valorTabela = leitor.nextDouble();
 
         LivroComum livroComum = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
         livroComum.calcIndiceRaridade();
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         livrosComuns.add(livroComum);
     }
 
     private void cadastrarLivroTecnico(){
         Scanner leitor = new Scanner(System.in);
-
-        System.out.print("ID do livro: ");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("ID do livro: \n");
         int idLivro = leitor.nextInt();
 
-        System.out.print("Titulo do livro: ");
+        System.out.print("Titulo do livro: \n");
         leitor.nextLine();// limpa o scanner
         String titulo = leitor.nextLine();
 
-        System.out.print("Nome do autor: ");
-        leitor.nextLine();// limpa o scanner
+        System.out.print("Nome do autor: \n");
         String autor = leitor.nextLine();
 
-        System.out.print("Nome da editora: ");
-        leitor.nextLine();// limpa o scanner
+        System.out.print("Nome da editora: \n");
         String editora = leitor.nextLine();
 
-        System.out.print("Ano de publicação: ");
+        System.out.print("Ano de publicação: \n");
         int anoPublicacao = leitor.nextInt();
 
-        System.out.print("Quantidade em estoque: ");
+        System.out.print("Quantidade em estoque: \n");
         int qntdEstoque = leitor.nextInt();
 
-        System.out.print("Valor(ex. 0,00): ");
+        System.out.print("Valor(ex. 0,00): \n");
         double valorTabela = leitor.nextDouble();
 
-        System.out.print("Valor adicional(ex. 0,00): ");
+        System.out.print("Valor adicional(ex. 0,00): \n");
         double valorAdicional = leitor.nextDouble();
 
         LivroTecnico livroTecnico = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
-
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         livrosTecnicos.add(livroTecnico);
     }
 
     private void listarLivroComum(){
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosComuns.size();
-        System.out.print("\nLista dos livros comuns.\n");
+        System.out.print("\nLista dos livros comuns. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d- %s\n", i, livrosComuns.get(i).getTitulo());
         }
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private LivroTecnico pegaLivroTecnico() {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\nInforme a posição do LivroTecnico:\n");
+        System.out.print("\nInforme a posição do LivroTecnico: \n");
         int posicao = leitor.nextInt();
         return livrosTecnicos.get(posicao);
     }
     private void listarLivroTecnico(){
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosTecnicos.size();
-        System.out.print("\nLista dos livros tecnicos.\n");
+        System.out.print("\nLista dos livros tecnicos. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d- %s\n", i, livrosTecnicos.get(i).getTitulo());
         }
-        System.out.print("\n<><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private LivroComum pegaLivroComum() {
@@ -290,46 +296,61 @@ public class Principal {
         Scanner leitor = new Scanner(System.in);
         listarClientes();
         Cliente clientepedido = pegaCliente();
-        Pedido pedidoCriado = new Pedido(clientepedido, LocalDate.now(),"Cadastrando");
-
-        exibirLivrosPedido();
+        Pedido pedidoCriado = new Pedido(clientepedido, LocalDate.now(),"Pendente");
 
         short escolha;
         do {
+
+            exibirLivrosPedido();
+            System.out.print("Opção escolhida: \n");
             escolha = leitor.nextShort();
+
             switch (escolha) {
                 case 1:
                     if (livrosTecnicos.isEmpty()) {
                         System.out.println("\nNenhum livro tecnico cadastrado.\n");
                     } else {
+                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroTecnico();
+                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroTecnico livro = pegaLivroTecnico();
-                        System.out.println("\nQuantas unidades?\n");
+                        System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         ItemPedido item = new ItemPedido(quantidade, livro);
                         pedidoCriado.add( item);
-                        escolha=99;
+                        pedidoCriado.setStatus("Registrado");
                     }
                     break;
                 case 2:
                     if (livrosComuns.isEmpty()) {
-                        System.out.println("\nNenhum livro comum cadastrado.\n");
+                        System.out.println("\nNenhum livro comum cadastrado. \n");
                     } else {
+                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroComum();
+                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroComum livro = pegaLivroComum();
-                        System.out.println("\nQuantas unidades?\n");
+                        System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         ItemPedido item = new ItemPedido(quantidade, livro);
                         pedidoCriado.add(item);
-                        escolha=99;
+                        pedidoCriado.setStatus("Registrado");
                     }
                     break;
+                case 3:
+                    pedidoCriado.setStatus("Finalizado");
+                    pedidos.add(pedidoCriado);
+                    escolha = 99;
+                    break;
+                case 4:
+                    escolha = 99;
+                    break;
+                case 50:
+                    exibirLivrosPedido();
+                    break;
                 default:
-                    System.out.println("Esse número não é válido.");
+                    System.out.println("Esse número não é válido. \n");
             }
         }while (escolha!=99);
-
-        pedidos.add(pedidoCriado);
     }
 
     private void imprimirCliente(){
@@ -337,11 +358,13 @@ public class Principal {
         if (clientes.isEmpty()){
             System.out.println("\nNão há clientes cadastrados.");
         } else {
+            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
             for (Cliente cliente : clientes) {
                 System.out.println("\nId: " + cliente.getId());
                 System.out.println("Nome: " + cliente.getNome());
                 System.out.println("E-mail: " + cliente.getEmail());
                 cliente.situacaoCadastro();
+                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
             }
         }
     }
@@ -350,6 +373,7 @@ public class Principal {
             if (livrosComuns.isEmpty()){
                 System.out.println("\nNão há livros comuns cadastrados.");
             } else {
+                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                 for (LivroComum livroComum : livrosComuns) {
                     System.out.println("\nId do Livro: " + livroComum.getIdLivro());
                     System.out.println("Título: " + livroComum.getTitulo());
@@ -359,6 +383,7 @@ public class Principal {
                     System.out.println("Quantidade em estoque: " + livroComum.getQntdEstoque());
                     System.out.println("Valor: " + livroComum.getValorTabela());
                     System.out.println("Indice de raridade: " + livroComum.getIndiceRaridade());
+                    System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                 }
             }
     }
@@ -367,6 +392,7 @@ public class Principal {
             if (livrosTecnicos.isEmpty()){
                 System.out.println("\nNão há livros comuns cadastrados.");
             } else {
+                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                 for (LivroTecnico livroTecnico : livrosTecnicos) {
                     System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
                     System.out.println("Título: " + livroTecnico.getTitulo());
@@ -376,6 +402,7 @@ public class Principal {
                     System.out.println("Quantidade em estoque: " + livroTecnico.getQntdEstoque());
                     System.out.println("Valor: " + livroTecnico.getValorTabela());
                     System.out.println("Valor adicional: " + livroTecnico.getValorAdicional());
+                    System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                 }
             }
     }
@@ -384,11 +411,13 @@ public class Principal {
         if (pedidos.isEmpty()){
             System.out.println("\nNão há pedidos cadastrados.");
         } else {
+            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
             for (Pedido pedido : pedidos) {
                 System.out.println("\nCliente: " + pedido.getCliente().getNome());
-                System.out.println("Item pedidos: " + pedido.getPedido());
-                System.out.println("Autor(a): " + pedido.getData());
-                System.out.println("Editora: " + pedido.getStatus());
+                pedido.mostrarPedidos();
+                System.out.println("Data do pedido: " + pedido.getData());
+                System.out.println("Situação: " + pedido.getStatus());
+                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
             }
         }
     }
@@ -408,7 +437,7 @@ public class Principal {
         do{
             menu.exibirMenu();
 
-            System.out.print("Opção escolhida: ");
+            System.out.print("Opção escolhida: \n");
             opcao = leitor.nextShort();
 
             switch(opcao){
@@ -416,7 +445,7 @@ public class Principal {
                     do {
                         menu.exibirClientes();
 
-                        System.out.print("Opção escolhida: ");
+                        System.out.print("Opção escolhida: \n");
                         opcaoClientes = leitor.nextShort();
 
                         switch (opcaoClientes) {
@@ -425,17 +454,17 @@ public class Principal {
                                 break;
                             case 2:
                                 if (menu.clientes.isEmpty()) {
-                                    System.out.print("\nNenhum cliente cadastrado.\n");
+                                    System.out.print("\nNenhum cliente cadastrado. \n");
                                     opcaoClientes = 50;
                                 } else {
                                     opcaoClientes = 50;
                                     menu.listarClientes();
-                                    System.out.print("\nInforme a posição do cliente que deseja editar:\n");
+                                    System.out.print("\nInforme a posição do cliente que deseja editar: \n");
                                     posicaoCliente = leitor.nextInt();
 
                                     do {
                                         menu.editarClientes();
-                                        System.out.print("Opção escolhida: ");
+                                        System.out.print("Opção escolhida: \n");
                                         opcaoEditarClie = leitor.nextShort();
 
                                         switch (opcaoEditarClie) {
@@ -458,7 +487,7 @@ public class Principal {
                                                 menu.editarClientes();
                                                 break;
                                             case 99:
-                                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                                 int confirmaSair = leitor.nextShort();
                                                 if (confirmaSair > 1) {
                                                     opcaoEditarClie = 50;
@@ -469,7 +498,7 @@ public class Principal {
                                                 }
                                                 break;
                                             default:
-                                                System.out.print("Esse número não é válido.");
+                                                System.out.print("Esse número não é válido. \n");
                                         }
                                     } while (opcaoEditarClie != 99);
                                 }
@@ -481,7 +510,7 @@ public class Principal {
                                 menu.exibirLivros();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                 int confirmaSair = leitor.nextShort();
                                 if(confirmaSair>1){
                                     opcaoClientes=50;
@@ -491,7 +520,7 @@ public class Principal {
                                 }
                                 break;
                             default:
-                                System.out.print("Esse número não é válido.");
+                                System.out.print("Esse número não é válido. \n");
                                 menu.exibirClientes();
                         }
                     }while(opcaoClientes != 99);
@@ -500,7 +529,7 @@ public class Principal {
                     do {
                         menu.exibirLivros();
 
-                        System.out.print("Opção escolhida: ");
+                        System.out.print("Opção escolhida: \n");
                         opcaoLivros = leitor.nextShort();
 
                         switch (opcaoLivros) {
@@ -508,7 +537,7 @@ public class Principal {
                                 do {
                                     menu.livrosTecnicos();
 
-                                    System.out.print("Opção escolhida: ");
+                                    System.out.print("Opção escolhida: \n");
                                     opcaoLivrosTec = leitor.nextShort();
                                     switch (opcaoLivrosTec) {
                                         case 1:
@@ -524,7 +553,7 @@ public class Principal {
                                             menu.livrosTecnicos();
                                             break;
                                         case 99:
-                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                             int confirmaSair = leitor.nextShort();
                                             if(confirmaSair>1){
                                                 opcaoLivrosTec = 50;
@@ -535,7 +564,7 @@ public class Principal {
                                             }
                                             break;
                                         default:
-                                            System.out.print("Esse número não é válido.");
+                                            System.out.print("Esse número não é válido. \n");
                                     }
 
                                 }while (opcaoLivrosTec != 99);
@@ -544,7 +573,7 @@ public class Principal {
                                 do {
                                     menu.livrosComuns();
 
-                                    System.out.print("Opção escolhida: ");
+                                    System.out.print("Opção escolhida: \n");
                                     opcaoLivrosCom = leitor.nextShort();
                                     switch (opcaoLivrosCom) {
                                         case 1:
@@ -560,7 +589,7 @@ public class Principal {
                                             menu.livrosComuns();
                                             break;
                                         case 99:
-                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                             int confirmaSair = leitor.nextShort();
                                             if(confirmaSair>1){
                                                 opcaoLivrosCom = 50;
@@ -571,9 +600,8 @@ public class Principal {
                                             }
                                             break;
                                         default:
-                                            System.out.print("Esse número não é válido.");
+                                            System.out.print("Esse número não é válido. \n");
                                     }
-
                                 }while (opcaoLivrosCom != 99);
                                 break;
                             case 3:
@@ -583,7 +611,7 @@ public class Principal {
                                 menu.exibirLivros();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                 int confirmaSair = leitor.nextShort();
                                 if(confirmaSair>1){
                                     opcaoLivros=50;
@@ -593,22 +621,21 @@ public class Principal {
                                 }
                                 break;
                             default:
-                                System.out.print("Esse número não é válido.");
+                                System.out.print("Esse número não é válido. \n");
                         }
                     }while(opcaoLivros != 99);
                     break;
                 case 3:
                     do {
-
                         if (menu.clientes.isEmpty()) {
-                            System.out.print("\nNenhum cliente cadastrado.\n");
+                            System.out.print("\nNenhum cliente cadastrado. \n");
                             opcao = 50;
-                        } else  {
+                            opcaoPedidos = 3;
+                        } else {
                             menu.pedidos();
+                            System.out.print("Opção escolhida: \n");
+                            opcaoPedidos = leitor.nextShort();
                         }
-
-                        System.out.print("Opção escolhida: ");
-                        opcaoPedidos = leitor.nextShort();
                         switch (opcaoPedidos) {
                             case 1:
                                 menu.cadastrarPedido();
@@ -624,7 +651,7 @@ public class Principal {
                                 menu.pedidos();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                                 int confirmaSair = leitor.nextShort();
                                 if(confirmaSair>1){
                                     opcaoPedidos = 50;
@@ -634,7 +661,7 @@ public class Principal {
                                 }
                                 break;
                             default:
-                                System.out.print("Esse número não é válido.");
+                                System.out.print("Esse número não é válido. \n");
                         }
 
                     }while (opcaoPedidos != 99);
@@ -650,7 +677,7 @@ public class Principal {
                     menu.exibirMenu();
                     break;
                 case 99:
-                    System.out.print("Quer mesmo sair? Sim(1) / Não(2) ");
+                    System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
                     int confirmaSair = leitor.nextShort();
                     if(confirmaSair>1){
                         opcao=50;
@@ -659,7 +686,7 @@ public class Principal {
                     }
                     break;
                 default:
-                    System.out.print("Esse número não é válido.");
+                    System.out.print("Esse número não é válido. \n");
             }
         }while(opcao != 99);
         leitor.close();

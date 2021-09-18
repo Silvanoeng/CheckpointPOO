@@ -10,7 +10,7 @@ public class LivroTecnico extends Livro {
 
     @Override
     public double calcPreco() {
-        return this.getValorTabela() + this.valorAdicional;
+        return (this.getValorTabela() + this.valorAdicional);
     }
 
     public double getValorAdicional() {

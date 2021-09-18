@@ -25,8 +25,10 @@ public class Pedido {
     }
 
 
-    public List<ItemPedido> getPedido() {
-        return pedido;
+    public void mostrarPedidos() {
+        for(ItemPedido item: pedido){
+            System.out.printf("%s, %d un. valor total R$ %.2f", item.getLivro().getTitulo(), item.getQuantidade(), item.calcularTotalLivro());
+        };
     }
 
     public LocalDate getData() {
@@ -48,5 +50,6 @@ public class Pedido {
     public void add(ItemPedido itemPedido) {
         pedido.add(itemPedido);
     }
+
 
 }
