@@ -13,8 +13,7 @@ public class Principal {
     List<LivroTecnico> livrosTecnicos = new ArrayList<>();
 
     private void exibirMenu(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||      >>>   Menu de Opções   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||            01 - Clientes              ||");
@@ -26,8 +25,7 @@ public class Principal {
     }
 
     private void exibirClientes(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||     >>>   Menu de Clientes   <<<      ||");
         System.out.println("*******************************************");
         System.out.println("||        01 - Cadastrar Cliente         ||");
@@ -39,8 +37,7 @@ public class Principal {
     }
 
     private void editarClientes(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||      >>>   Editar Cliente   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||        01 - Id Cliente                ||");
@@ -52,8 +49,7 @@ public class Principal {
     }
 
     private void exibirLivros(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||      >>>   Menu de Livros   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||    01 - Cadastrar Livros Tecnicos     ||");
@@ -67,8 +63,7 @@ public class Principal {
 
 
     private void exibirLivrosPedido(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||      >>>   Menu de Pedido   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||    01 - Acrescentar Livros Tecnicos   ||");
@@ -80,8 +75,7 @@ public class Principal {
     }
 
     private void pedidos(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
+        System.out.println("\n*******************************************");
         System.out.println("||     >>>   Menu de Pedidos   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||        01 - Cadastrar Pedido          ||");
@@ -94,11 +88,11 @@ public class Principal {
 
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         System.out.print("Quantos clientes você deseja cadastrar: \n");
         int qtdContas = leitor.nextInt();
 
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
 
         for(int i=1; i<=qtdContas;i++) {
 
@@ -118,7 +112,7 @@ public class Principal {
 
             clientes.add(cliente);
 
-            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+            System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         }
     }
 
@@ -129,41 +123,41 @@ public class Principal {
         return clientes.get(posicao);
     }
     private void listarClientes(){
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = clientes.size();
         System.out.print("\nLista dos clientes. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d- %s\n", i, clientes.get(i).getNome());
         }
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
    private void editarId(int posicao) {
        Scanner leitor = new Scanner(System.in);
-       System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+       System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
        System.out.print("ID do cliente: \n");
        int id = leitor.nextInt();
        clientes.get(posicao).setId(id);
-       System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+       System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
    }
     private void editarNome(int posicao) {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         System.out.print("Nome do cliente: \n");
         String nome = leitor.nextLine();
         clientes.get(posicao).setNome(nome);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
     private void editarEmail(int posicao) {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         System.out.print("E-mail: \n");
         String email = leitor.next();
         clientes.get(posicao).setEmail(email);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
     private void editarCadastro(int posicao) {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         clientes.get(posicao).situacaoCadastro();
         System.out.print("\nCadastro do cliente ativo(1) ou cancelado(2) \n");
         int confirmaCadastro = leitor.nextShort();
@@ -172,12 +166,12 @@ public class Principal {
         } else {
             clientes.get(posicao).setCadastro(true);
         }
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         System.out.print("ID do livro: \n");
         int idLivro = leitor.nextInt();
 
@@ -202,13 +196,13 @@ public class Principal {
 
         LivroComum livroComum = new LivroComum(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
         livroComum.calcIndiceRaridade();
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         livrosComuns.add(livroComum);
     }
 
     private void cadastrarLivroTecnico(){
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         System.out.print("ID do livro: \n");
         int idLivro = leitor.nextInt();
 
@@ -235,18 +229,18 @@ public class Principal {
         double valorAdicional = leitor.nextDouble();
 
         LivroTecnico livroTecnico = new LivroTecnico(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela, valorAdicional);
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         livrosTecnicos.add(livroTecnico);
     }
 
     private void listarLivroComum(){
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosComuns.size();
         System.out.print("\nLista dos livros comuns. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d - %s\n", i, livrosComuns.get(i).getTitulo());
         }
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private LivroTecnico pegaLivroTecnico() {
@@ -256,13 +250,13 @@ public class Principal {
         return livrosTecnicos.get(posicao);
     }
     private void listarLivroTecnico(){
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosTecnicos.size();
         System.out.print("\nLista dos livros tecnicos. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d - %s\n", i, livrosTecnicos.get(i).getTitulo());
         }
-        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     private LivroComum pegaLivroComum() {
@@ -289,13 +283,13 @@ public class Principal {
             switch (escolha) {
                 case 1:
                     if (livrosTecnicos.isEmpty()) {
-                        System.out.println("\nNenhum livro tecnico cadastrado.\n");
+                        System.out.println("Nenhum livro tecnico cadastrado.\n");
                     } else {
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroTecnico();
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroTecnico livro = pegaLivroTecnico();
-                        System.out.println("\nQuantas unidades? \n");
+                        System.out.println("Quantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         if(livro.temEstoque(quantidade)) {
                             ItemPedido item = new ItemPedido(quantidade, livro);
@@ -310,13 +304,13 @@ public class Principal {
                     break;
                 case 2:
                     if (livrosComuns.isEmpty()) {
-                        System.out.println("\nNenhum livro comum cadastrado. \n");
+                        System.out.println("Nenhum livro comum cadastrado. \n");
                     } else {
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroComum();
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroComum livro = pegaLivroComum();
-                        System.out.println("\nQuantas unidades? \n");
+                        System.out.println("Quantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         if(livro.temEstoque(quantidade)){
                             ItemPedido item = new ItemPedido(quantidade, livro);
@@ -331,25 +325,33 @@ public class Principal {
                     }
                     break;
                 case 3:
-                    pedidoCriado.listarItens();
-                    System.out.println("\nQual posição do item que desenha remover? \n");
-                    int posicao = leitor.nextInt();
-                    System.out.println("\nConfirme para remover o livro "+ pedidoCriado.listarItem(posicao) +" Sim(1) / Não(2)\n");
-                    int confirmaRemover= leitor.nextInt();
-                    if(confirmaRemover>1){
-                        System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
+                    if(contLivroPedido > 0) {
+                        pedidoCriado.listarItens();
+                        System.out.println("Qual posição do item que desenha remover? \n");
+                        int posicao = leitor.nextInt();
+                        System.out.println("Confirme para remover o livro " + pedidoCriado.listarItem(posicao) + " Sim(1) / Não(2)\n");
+                        int confirmaRemover = leitor.nextInt();
+                        if (confirmaRemover > 1) {
+                            System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
+                        } else {
+                            pedidoCriado.devolverLivro(posicao, pedidoCriado.quantidadeItem(posicao));
+                            System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", foi removido.\n");
+                            pedidoCriado.removerItem(posicao);
+                            contLivroPedido--;
+                        }
                     } else {
-                        pedidoCriado.devolverLivro(posicao,pedidoCriado.quantidadeItem(posicao));
-                        System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", foi removido.\n");
-                        pedidoCriado.removerItem(posicao);
-                        contLivroPedido--;
+                        System.out.println("Não existe pedido registrado.");
                     }
                     break;
                 case 4:
-                    pedidoCriado.setStatus("Finalizado");
-                    pedidos.add(pedidoCriado);
-                    contLivroPedido=0;
-                    escolha = 99;
+                    if(contLivroPedido > 0) {
+                        pedidoCriado.setStatus("Finalizado");
+                        pedidos.add(pedidoCriado);
+                        contLivroPedido = 0;
+                        escolha = 99;
+                    } else {
+                        System.out.println("Não existe pedido registrado.");
+                    }
                     break;
                 case 50:
                     exibirLivrosPedido();
@@ -369,24 +371,24 @@ public class Principal {
     private void imprimirCliente(){
 
         if (clientes.isEmpty()){
-            System.out.println("\nNão há clientes cadastrados.");
+            System.out.println("Não há clientes cadastrados.");
         } else {
-            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+            System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
             for (Cliente cliente : clientes) {
                 System.out.println("\nId: " + cliente.getId());
                 System.out.println("Nome: " + cliente.getNome());
                 System.out.println("E-mail: " + cliente.getEmail());
                 cliente.situacaoCadastro();
-                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
             }
         }
     }
 
     private void imprimirLivroComum(){
             if (livrosComuns.isEmpty()){
-                System.out.println("\nNão há livros comuns cadastrados.");
+                System.out.println("Não há livros comuns cadastrados.");
             } else {
-                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                 System.out.print("---------------Livros Comuns---------------\n");
                 for (LivroComum livroComum : livrosComuns) {
                     System.out.println("\nId do Livro: " + livroComum.getIdLivro());
@@ -404,12 +406,12 @@ public class Principal {
 
     private void imprimirLivroTecnico(){
             if (livrosTecnicos.isEmpty()){
-                System.out.println("\nNão há livros comuns cadastrados.");
+                System.out.println("Não há livros comuns cadastrados.");
             } else {
-                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                 System.out.print("--------------Livros Tecnicos--------------\n");
                 for (LivroTecnico livroTecnico : livrosTecnicos) {
-                    System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
+                    System.out.println("Id do Livro: " + livroTecnico.getIdLivro());
                     System.out.println("Título: " + livroTecnico.getTitulo());
                     System.out.println("Autor(a): " + livroTecnico.getAutor());
                     System.out.println("Editora: " + livroTecnico.getEditora());
@@ -423,16 +425,16 @@ public class Principal {
 
     private void imprimirPedidos(){
         if (pedidos.isEmpty()){
-            System.out.println("\nNão há pedidos cadastrados.");
+            System.out.println("Não há pedidos cadastrados.");
         } else {
-            System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+            System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
             for (Pedido pedido : pedidos) {
-                System.out.println("\nCliente: " + pedido.getCliente().getNome());
+                System.out.println("Cliente: " + pedido.getCliente().getNome());
                 pedido.mostrarPedidos();
-                System.out.println("Valor total do pedido: " + pedido.valorTotalPedido());
+                System.out.printf("Valor total do pedido: %f.2.", pedido.valorTotalPedido());
                 System.out.println("Data do pedido: " + pedido.getData());
                 System.out.println("Situação: " + pedido.getStatus());
-                System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
             }
         }
     }
@@ -470,12 +472,12 @@ public class Principal {
                                 break;
                             case 3:
                                 if (menu.clientes.isEmpty()) {
-                                    System.out.print("\nNenhum cliente cadastrado. \n");
+                                    System.out.print("Nenhum cliente cadastrado.");
                                     opcaoClientes = 50;
                                 } else {
                                     opcaoClientes = 50;
                                     menu.listarClientes();
-                                    System.out.print("\nInforme a posição do cliente que deseja editar: \n");
+                                    System.out.print("Informe a posição do cliente que deseja editar: \n");
                                     posicao = leitor.nextInt();
 
                                     do {
@@ -508,10 +510,15 @@ public class Principal {
                                 }
                                 break;
                             case 4:
-                                menu.listarClientes();
-                                System.out.print("\nInforme a posição do cliente que deseja excluir: \n");
-                                posicao = leitor.nextInt();
-                                menu.clientes.remove(posicao);
+                                if (menu.clientes.isEmpty()) {
+                                    System.out.print("Nenhum cliente cadastrado.");
+                                    opcaoClientes = 50;
+                                } else {
+                                    menu.listarClientes();
+                                    System.out.print("Informe a posição do cliente que deseja excluir: \n");
+                                    posicao = leitor.nextInt();
+                                    menu.clientes.remove(posicao);
+                                }
                                 break;
                             case 50:
                                 menu.exibirLivros();
@@ -536,23 +543,40 @@ public class Principal {
                                 menu.cadastrarLivroTecnico();
                                 break;
                             case 2:
-                                menu.listarLivroTecnico();
-                                System.out.print("\nInforme a posição do livro tecnico que deseja excluir: \n");
-                                posicao = leitor.nextInt();
-                                menu.livrosTecnicos.remove(posicao);
+                                if (menu.livrosTecnicos.isEmpty()) {
+                                    System.out.println("Nenhum livro tecnico cadastrado.\n");
+                                } else {
+                                    menu.listarLivroTecnico();
+                                    System.out.print("Informe a posição do livro tecnico que deseja excluir: \n");
+                                    posicao = leitor.nextInt();
+                                    menu.livrosTecnicos.remove(posicao);
+                                }
                                 break;
                             case 3:
                                 menu.cadastrarLivroComum();
                                 break;
                             case 4:
-                                menu.listarLivroComum();
-                                System.out.print("\nInforme a posição do livro comum que deseja excluir: \n");
-                                posicao = leitor.nextInt();
-                                menu.livrosComuns.remove(posicao);
+                                if (menu.livrosComuns.isEmpty()) {
+                                    System.out.println("Nenhum livro comum cadastrado.\n");
+                                } else {
+                                    menu.listarLivroComum();
+                                    System.out.print("Informe a posição do livro comum que deseja excluir: \n");
+                                    posicao = leitor.nextInt();
+                                    menu.livrosComuns.remove(posicao);
+                                }
                                 break;
                             case 5:
-                                menu.imprimirLivroTecnico();
-                                menu.imprimirLivroComum();
+                                if (menu.livrosTecnicos.isEmpty()) {
+                                    System.out.println("Nenhum livro tecnico cadastrado.\n");
+                                } else {
+                                    menu.imprimirLivroTecnico();
+                                }
+                                if (menu.livrosComuns.isEmpty()) {
+                                    System.out.println("Nenhum livro comum cadastrado.\n");
+                                } else {
+                                    menu.imprimirLivroComum();
+                                }
+                                break;
                             case 50:
                                 menu.exibirLivros();
                                 break;
@@ -566,9 +590,11 @@ public class Principal {
                 case 3:
                     do {
                         if (menu.clientes.isEmpty()) {
-                            System.out.print("\nNenhum cliente cadastrado. \n");
-                            opcao = 50;
-                            opcaoPedidos = 3;
+                            System.out.print("Nenhum cliente cadastrado. \n");
+                            opcaoPedidos = 99;
+                        } else if (menu.livrosComuns.isEmpty() && menu.livrosTecnicos.isEmpty()) {
+                            System.out.print("Nenhum livro cadastrado. \n");
+                            opcaoPedidos = 99;
                         } else {
                             menu.pedidos();
                             System.out.print("Opção escolhida: \n");
