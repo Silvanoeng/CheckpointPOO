@@ -60,35 +60,11 @@ public class Principal {
         System.out.println("||    02 - Excluir Livros Tecnicos       ||");
         System.out.println("||    03 - Cadastrar Livros Comuns       ||");
         System.out.println("||    04 - Excluir Livros Comuns         ||");
+        System.out.println("||    05 - Listar Todos os Livros        ||");
         System.out.println("||    99 - Voltar                        ||");
         System.out.println("*******************************************");
     }
 
-    private void exibirLivrosTecnicos(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
-        System.out.println("||  >>>   Menu de Livros Tecnicos  <<<   ||");
-        System.out.println("*******************************************");
-        System.out.println("||     01 - Cadastrar Livros             ||");
-        System.out.println("||     02 - Excluir Livros               ||");
-        System.out.println("||     03 - Imprimir Lista de livros     ||");
-        System.out.println("||                                       ||");
-        System.out.println("||     99 - Voltar                       ||");
-        System.out.println("*******************************************");
-    }
-
-    private void exibirLivrosComuns(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
-        System.out.println("||   >>>   Menu de Livros Comuns  <<<    ||");
-        System.out.println("*******************************************");
-        System.out.println("||     01 - Cadastrar Livros             ||");
-        System.out.println("||     02 - Excluir Livros               ||");
-        System.out.println("||     03 - Imprimir Lista de livros     ||");
-        System.out.println("||                                       ||");
-        System.out.println("||     99 - Voltar                       ||");
-        System.out.println("*******************************************");
-    }
 
     private void exibirLivrosPedido(){
         System.out.println("\n");
@@ -315,9 +291,9 @@ public class Principal {
                     if (livrosTecnicos.isEmpty()) {
                         System.out.println("\nNenhum livro tecnico cadastrado.\n");
                     } else {
-                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroTecnico();
-                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroTecnico livro = pegaLivroTecnico();
                         System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
@@ -336,9 +312,9 @@ public class Principal {
                     if (livrosComuns.isEmpty()) {
                         System.out.println("\nNenhum livro comum cadastrado. \n");
                     } else {
-                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroComum();
-                        System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         LivroComum livro = pegaLivroComum();
                         System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
@@ -375,15 +351,14 @@ public class Principal {
                     contLivroPedido=0;
                     escolha = 99;
                     break;
-                case 5:
+                case 50:
+                    exibirLivrosPedido();
+                    break;
+                case 99:
                     if (contLivroPedido>0){
                         pedidoCriado.devolverItens();
                         contLivroPedido=0;
                     }
-                    escolha = 99;
-                    break;
-                case 50:
-                    exibirLivrosPedido();
                     break;
                 default:
                     System.out.println("Esse número não é válido. \n");
@@ -468,7 +443,7 @@ public class Principal {
         short opcaoClientes;
         short opcaoEditarClie;
         short opcaoPedidos;
-        int posicaoCliente;
+        int posicao;
         Scanner leitor = new Scanner(System.in);
         Principal menu = new Principal();
 
@@ -491,6 +466,9 @@ public class Principal {
                                 menu.cadastrarCliente();
                                 break;
                             case 2:
+                                menu.imprimirCliente();
+                                break;
+                            case 3:
                                 if (menu.clientes.isEmpty()) {
                                     System.out.print("\nNenhum cliente cadastrado. \n");
                                     opcaoClientes = 50;
@@ -498,7 +476,7 @@ public class Principal {
                                     opcaoClientes = 50;
                                     menu.listarClientes();
                                     System.out.print("\nInforme a posição do cliente que deseja editar: \n");
-                                    posicaoCliente = leitor.nextInt();
+                                    posicao = leitor.nextInt();
 
                                     do {
                                         menu.editarClientes();
@@ -507,33 +485,21 @@ public class Principal {
 
                                         switch (opcaoEditarClie) {
                                             case 1:
-                                                menu.editarId(posicaoCliente);
+                                                menu.editarId(posicao);
                                                 break;
                                             case 2:
-                                                menu.editarNome(posicaoCliente);
+                                                menu.editarNome(posicao);
                                                 break;
                                             case 3:
-                                                menu.editarEmail(posicaoCliente);
+                                                menu.editarEmail(posicao);
                                                 break;
                                             case 4:
-                                                menu.editarCadastro(posicaoCliente);
-                                                break;
-                                            case 5:
-                                                opcaoEditarClie = 99;
+                                                menu.editarCadastro(posicao);
                                                 break;
                                             case 50:
                                                 menu.editarClientes();
                                                 break;
                                             case 99:
-                                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                                int confirmaSair = leitor.nextShort();
-                                                if (confirmaSair > 1) {
-                                                    opcaoEditarClie = 50;
-                                                } else {
-                                                    System.out.print("Programa finalizado.");
-                                                    opcaoClientes = 99;
-                                                    opcao = 99;
-                                                }
                                                 break;
                                             default:
                                                 System.out.print("Esse número não é válido. \n");
@@ -541,21 +507,16 @@ public class Principal {
                                     } while (opcaoEditarClie != 99);
                                 }
                                 break;
-                            case 3:
-                                opcaoClientes = 99;
+                            case 4:
+                                menu.listarClientes();
+                                System.out.print("\nInforme a posição do cliente que deseja excluir: \n");
+                                posicao = leitor.nextInt();
+                                menu.clientes.remove(posicao);
                                 break;
                             case 50:
                                 menu.exibirLivros();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                int confirmaSair = leitor.nextShort();
-                                if(confirmaSair>1){
-                                    opcaoClientes=50;
-                                } else {
-                                    System.out.print("Programa finalizado.");
-                                    opcao = 99;
-                                }
                                 break;
                             default:
                                 System.out.print("Esse número não é válido. \n");
@@ -575,23 +536,27 @@ public class Principal {
                                 menu.cadastrarLivroTecnico();
                                 break;
                             case 2:
-                                menu.cadastrarLivroComum();
+                                menu.listarLivroTecnico();
+                                System.out.print("\nInforme a posição do livro tecnico que deseja excluir: \n");
+                                posicao = leitor.nextInt();
+                                menu.livrosTecnicos.remove(posicao);
                                 break;
                             case 3:
-                                opcaoLivros = 99;
+                                menu.cadastrarLivroComum();
                                 break;
+                            case 4:
+                                menu.listarLivroComum();
+                                System.out.print("\nInforme a posição do livro comum que deseja excluir: \n");
+                                posicao = leitor.nextInt();
+                                menu.livrosComuns.remove(posicao);
+                                break;
+                            case 5:
+                                menu.imprimirLivroTecnico();
+                                menu.imprimirLivroComum();
                             case 50:
                                 menu.exibirLivros();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                int confirmaSair = leitor.nextShort();
-                                if(confirmaSair>1){
-                                    opcaoLivros=50;
-                                } else {
-                                    System.out.print("Programa finalizado.");
-                                    opcao = 99;
-                                }
                                 break;
                             default:
                                 System.out.print("Esse número não é válido. \n");
@@ -616,35 +581,16 @@ public class Principal {
                             case 2:
                                 menu.imprimirPedidos();
                                 break;
-                            case 3:
-                                opcaoPedidos = 99;
-                                opcao = 50;
-                                break;
                             case 50:
                                 menu.pedidos();
                                 break;
                             case 99:
-                                System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                int confirmaSair = leitor.nextShort();
-                                if(confirmaSair>1){
-                                    opcaoPedidos = 50;
-                                } else {
-                                    System.out.print("Programa finalizado.");
-                                    opcao = 99;
-                                }
                                 break;
                             default:
                                 System.out.print("Esse número não é válido. \n");
                         }
 
                     }while (opcaoPedidos != 99);
-                    break;
-                case 4:
-                    menu.imprimirCliente();
-                    break;
-                case 5:
-                    menu.imprimirLivroTecnico();
-                    menu.imprimirLivroComum();
                     break;
                 case 50:
                     menu.exibirMenu();
