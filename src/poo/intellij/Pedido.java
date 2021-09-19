@@ -31,9 +31,19 @@ public class Pedido {
         };
     }
 
+    public void devolverLivro(int posicao, int quantidade){
+        pedido.get(posicao).getLivro().devolverEstoque(quantidade);
+    }
+
     public void listarItens() {
         for(int i=0; i<pedido.size(); i++){
-            System.out.printf("%d - %d un. - %s \n", i, pedido.get(i).getQuantidade(), pedido.get(i).getLivro().getTitulo());
+            System.out.printf("Posição %d - %d un. - %s \n", i, pedido.get(i).getQuantidade(), pedido.get(i).getLivro().getTitulo());
+        };
+    }
+
+    public void devolverItens() {
+        for(int i=0; i<pedido.size(); i++){
+            pedido.get(i).getLivro().devolverEstoque(pedido.get(i).getQuantidade());;
         };
     }
 

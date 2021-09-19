@@ -17,12 +17,11 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||      >>>   Menu de Opções   <<<       ||");
         System.out.println("*******************************************");
-        System.out.println("||    01 - Clientes                      ||");
-        System.out.println("||    02 - Livros                        ||");
-        System.out.println("||    03 - Pedidos                       ||");
-        System.out.println("||    04 - Imprimir lista de Clientes    ||");
-        System.out.println("||    05 - Imprimir lista de Livros      ||");
-        System.out.println("||    99 - Sair                          ||");
+        System.out.println("||            01 - Clientes              ||");
+        System.out.println("||            02 - Livros                ||");
+        System.out.println("||            03 - Pedidos               ||");
+        System.out.println("||                                       ||");
+        System.out.println("||            99 - Sair                  ||");
         System.out.println("*******************************************");
     }
 
@@ -32,9 +31,10 @@ public class Principal {
         System.out.println("||     >>>   Menu de Clientes   <<<      ||");
         System.out.println("*******************************************");
         System.out.println("||        01 - Cadastrar Cliente         ||");
-        System.out.println("||        02 - Editar Cliente            ||");
-        System.out.println("||        03 - Voltar                    ||");
-        System.out.println("||        99 - Sair                      ||");
+        System.out.println("||        02 - Imprimir Clientes         ||");
+        System.out.println("||        03 - Editar Cliente            ||");
+        System.out.println("||        04 - Excluir Cliente           ||");
+        System.out.println("||        99 - Voltar                    ||");
         System.out.println("*******************************************");
     }
 
@@ -47,8 +47,7 @@ public class Principal {
         System.out.println("||        02 - Nome                      ||");
         System.out.println("||        03 - Email                     ||");
         System.out.println("||        04 - Desativar Cadastro        ||");
-        System.out.println("||        05 - Voltar                    ||");
-        System.out.println("||        99 - Sair                      ||");
+        System.out.println("||        99 - Voltar                    ||");
         System.out.println("*******************************************");
     }
 
@@ -58,9 +57,36 @@ public class Principal {
         System.out.println("||      >>>   Menu de Livros   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||    01 - Cadastrar Livros Tecnicos     ||");
-        System.out.println("||    02 - Cadastrar Livros Comuns       ||");
-        System.out.println("||    03 - Voltar                        ||");
-        System.out.println("||    99 - Sair                          ||");
+        System.out.println("||    02 - Excluir Livros Tecnicos       ||");
+        System.out.println("||    03 - Cadastrar Livros Comuns       ||");
+        System.out.println("||    04 - Excluir Livros Comuns         ||");
+        System.out.println("||    99 - Voltar                        ||");
+        System.out.println("*******************************************");
+    }
+
+    private void exibirLivrosTecnicos(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||  >>>   Menu de Livros Tecnicos  <<<   ||");
+        System.out.println("*******************************************");
+        System.out.println("||     01 - Cadastrar Livros             ||");
+        System.out.println("||     02 - Excluir Livros               ||");
+        System.out.println("||     03 - Imprimir Lista de livros     ||");
+        System.out.println("||                                       ||");
+        System.out.println("||     99 - Voltar                       ||");
+        System.out.println("*******************************************");
+    }
+
+    private void exibirLivrosComuns(){
+        System.out.println("\n");
+        System.out.println("*******************************************");
+        System.out.println("||   >>>   Menu de Livros Comuns  <<<    ||");
+        System.out.println("*******************************************");
+        System.out.println("||     01 - Cadastrar Livros             ||");
+        System.out.println("||     02 - Excluir Livros               ||");
+        System.out.println("||     03 - Imprimir Lista de livros     ||");
+        System.out.println("||                                       ||");
+        System.out.println("||     99 - Voltar                       ||");
         System.out.println("*******************************************");
     }
 
@@ -73,7 +99,7 @@ public class Principal {
         System.out.println("||    02 - Acrescentar Livros Comuns     ||");
         System.out.println("||    03 - Remover item do pedido        ||");
         System.out.println("||    04 - Finalizar Pedido              ||");
-        System.out.println("||    05 - Voltar                        ||");
+        System.out.println("||    99 - Voltar                        ||");
         System.out.println("*******************************************");
     }
 
@@ -82,10 +108,11 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||     >>>   Menu de Pedidos   <<<       ||");
         System.out.println("*******************************************");
-        System.out.println("||         01 - Cadastrar Pedido         ||");
-        System.out.println("||         02 - Imprimir Pedidos         ||");
-        System.out.println("||         03 - Voltar                   ||");
-        System.out.println("||         99 - Sair                     ||");
+        System.out.println("||        01 - Cadastrar Pedido          ||");
+        System.out.println("||        02 - Imprimir Pedidos          ||");
+        System.out.println("||                                       ||");
+        System.out.println("||                                       ||");
+        System.out.println("||        99 - Voltar                   ||");
         System.out.println("*******************************************");
     }
 
@@ -281,6 +308,7 @@ public class Principal {
             exibirLivrosPedido();
             System.out.print("Opção escolhida: \n");
             escolha = leitor.nextShort();
+            int contLivroPedido = 0;
 
             switch (escolha) {
                 case 1:
@@ -298,6 +326,7 @@ public class Principal {
                             livro.atualizandoEstoque(quantidade);
                             pedidoCriado.add(item);
                             pedidoCriado.setStatus("Registrado");
+                            contLivroPedido++;
                         } else {
                             System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
                         }
@@ -319,6 +348,7 @@ public class Principal {
                             livro.calcIndiceRaridade();
                             pedidoCriado.add(item);
                             pedidoCriado.setStatus("Registrado");
+                            contLivroPedido++;
                         } else {
                             System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
                         }
@@ -333,18 +363,23 @@ public class Principal {
                     if(confirmaRemover>1){
                         System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
                     } else {
-
-//                         pedidoCriado.quantidadeItem(posicao);
+                        pedidoCriado.devolverLivro(posicao,pedidoCriado.quantidadeItem(posicao));
                         System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", foi removido.\n");
                         pedidoCriado.removerItem(posicao);
+                        contLivroPedido--;
                     }
                     break;
                 case 4:
                     pedidoCriado.setStatus("Finalizado");
                     pedidos.add(pedidoCriado);
+                    contLivroPedido=0;
                     escolha = 99;
                     break;
                 case 5:
+                    if (contLivroPedido>0){
+                        pedidoCriado.devolverItens();
+                        contLivroPedido=0;
+                    }
                     escolha = 99;
                     break;
                 case 50:
