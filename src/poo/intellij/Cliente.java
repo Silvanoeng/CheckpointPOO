@@ -39,7 +39,7 @@ public class Cliente {
     }
 
 
-    public void situacaoCadastro() {
+    public void getCadastro() {
         String resposta;
         if (this.cadastro){
             resposta="ativo";
@@ -51,12 +51,6 @@ public class Cliente {
 
     public void setCadastro(boolean situacao) {
         this.cadastro = situacao;
-        String resposta;
-        if (this.cadastro){
-            resposta="ativo";
-        } else {
-            resposta="cancelado";
-        }
-        System.out.println("O cliente "+this.nome+" está com o seu cadastro "+resposta+".");
+        getCadastro();
     }
 }

@@ -158,7 +158,7 @@ public class Principal {
     private void editarCadastro(int posicao) {
         Scanner leitor = new Scanner(System.in);
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-        clientes.get(posicao).situacaoCadastro();
+        clientes.get(posicao).getCadastro();
         System.out.print("\nCadastro do cliente ativo(1) ou cancelado(2) \n");
         int confirmaCadastro = leitor.nextShort();
         if (confirmaCadastro > 1) {
@@ -378,7 +378,7 @@ public class Principal {
                 System.out.println("\nId: " + cliente.getId());
                 System.out.println("Nome: " + cliente.getNome());
                 System.out.println("E-mail: " + cliente.getEmail());
-                cliente.situacaoCadastro();
+                cliente.getCadastro();
                 System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
             }
         }

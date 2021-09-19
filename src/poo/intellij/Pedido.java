@@ -35,16 +35,24 @@ public class Pedido {
         pedido.get(posicao).getLivro().devolverEstoque(quantidade);
     }
 
+    public void devolverItens() {
+        for(int i=0; i<pedido.size(); i++){
+            pedido.get(i).getLivro().devolverEstoque(pedido.get(i).getQuantidade());;
+        };
+    }
+
     public void listarItens() {
         for(int i=0; i<pedido.size(); i++){
             System.out.printf("Posição %d - %d un. - %s \n", i, pedido.get(i).getQuantidade(), pedido.get(i).getLivro().getTitulo());
         };
     }
 
-    public void devolverItens() {
-        for(int i=0; i<pedido.size(); i++){
-            pedido.get(i).getLivro().devolverEstoque(pedido.get(i).getQuantidade());;
+    public double valorTotalPedido() {
+        double valor = 0.00;
+        for(ItemPedido item: pedido){
+            valor += item.calcularTotalLivro();
         };
+        return valor;
     }
 
     public String listarItem(int posicao){
@@ -57,14 +65,6 @@ public class Pedido {
 
     public void removerItem(int posicao){
         pedido.remove(posicao);
-    }
-
-    public double valorTotalPedido() {
-        double valor = 0.00;
-        for(ItemPedido item: pedido){
-             valor += item.calcularTotalLivro();
-        };
-        return valor;
     }
 
     public LocalDate getData() {
