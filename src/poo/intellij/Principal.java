@@ -29,7 +29,7 @@ public class Principal {
     private void exibirClientes(){
         System.out.println("\n");
         System.out.println("*******************************************");
-        System.out.println("||      >>>   Menu de Clientes   <<      ||");
+        System.out.println("||     >>>   Menu de Clientes   <<<      ||");
         System.out.println("*******************************************");
         System.out.println("||        01 - Cadastrar Cliente         ||");
         System.out.println("||        02 - Editar Cliente            ||");
@@ -55,55 +55,32 @@ public class Principal {
     private void exibirLivros(){
         System.out.println("\n");
         System.out.println("*******************************************");
-        System.out.println("||       >>>   Menu de Livros   <<       ||");
+        System.out.println("||      >>>   Menu de Livros   <<<       ||");
         System.out.println("*******************************************");
-        System.out.println("||         01 - Livros Tecnicos          ||");
-        System.out.println("||         02 - Livros Comuns            ||");
-        System.out.println("||         03 - Voltar                   ||");
-        System.out.println("||         99 - Sair                     ||");
+        System.out.println("||    01 - Cadastrar Livros Tecnicos     ||");
+        System.out.println("||    02 - Cadastrar Livros Comuns       ||");
+        System.out.println("||    03 - Voltar                        ||");
+        System.out.println("||    99 - Sair                          ||");
         System.out.println("*******************************************");
     }
 
     private void exibirLivrosPedido(){
         System.out.println("\n");
         System.out.println("*******************************************");
-        System.out.println("||       >>>   Menu de Livros   <<       ||");
+        System.out.println("||      >>>   Menu de Pedido   <<<       ||");
         System.out.println("*******************************************");
-        System.out.println("||      01 - Livros Tecnicos             ||");
-        System.out.println("||      02 - Livros Comuns               ||");
-        System.out.println("||      03 - Finalizar Pedido            ||");
-        System.out.println("||      04 - Voltar                      ||");
-        System.out.println("*******************************************");
-    }
-
-    private void livrosComuns(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
-        System.out.println("||    >>>   Menu de Livros Comuns   <<   ||");
-        System.out.println("*******************************************");
-        System.out.println("||         01 - Cadastrar Livro          ||");
-        System.out.println("||         02 - Editar Livro             ||");
-        System.out.println("||         03 - Voltar                   ||");
-        System.out.println("||         99 - Sair                     ||");
-        System.out.println("*******************************************");
-    }
-
-    private void livrosTecnicos(){
-        System.out.println("\n");
-        System.out.println("*******************************************");
-        System.out.println("||  >>>   Menu de Livros Tecnicos   <<   ||");
-        System.out.println("*******************************************");
-        System.out.println("||         01 - Cadastrar Livro          ||");
-        System.out.println("||         02 - Editar Livro             ||");
-        System.out.println("||         03 - Voltar                   ||");
-        System.out.println("||         99 - Sair                     ||");
+        System.out.println("||    01 - Acrescentar Livros Tecnicos   ||");
+        System.out.println("||    02 - Acrescentar Livros Comuns     ||");
+        System.out.println("||    03 - Remover item do pedido        ||");
+        System.out.println("||    04 - Finalizar Pedido              ||");
+        System.out.println("||    05 - Voltar                        ||");
         System.out.println("*******************************************");
     }
 
     private void pedidos(){
         System.out.println("\n");
         System.out.println("*******************************************");
-        System.out.println("||      >>>   Menu de Pedidos   <<       ||");
+        System.out.println("||     >>>   Menu de Pedidos   <<<       ||");
         System.out.println("*******************************************");
         System.out.println("||         01 - Cadastrar Pedido         ||");
         System.out.println("||         02 - Imprimir Pedidos         ||");
@@ -264,7 +241,7 @@ public class Principal {
         int posicaoArray = livrosComuns.size();
         System.out.print("\nLista dos livros comuns. \n");
         for (int i=0; i<posicaoArray; i++) {
-            System.out.printf("Posição %d- %s\n", i, livrosComuns.get(i).getTitulo());
+            System.out.printf("Posição %d - %s\n", i, livrosComuns.get(i).getTitulo());
         }
         System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
@@ -280,7 +257,7 @@ public class Principal {
         int posicaoArray = livrosTecnicos.size();
         System.out.print("\nLista dos livros tecnicos. \n");
         for (int i=0; i<posicaoArray; i++) {
-            System.out.printf("Posição %d- %s\n", i, livrosTecnicos.get(i).getTitulo());
+            System.out.printf("Posição %d - %s\n", i, livrosTecnicos.get(i).getTitulo());
         }
         System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
     }
@@ -316,9 +293,14 @@ public class Principal {
                         LivroTecnico livro = pegaLivroTecnico();
                         System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
-                        ItemPedido item = new ItemPedido(quantidade, livro);
-                        pedidoCriado.add( item);
-                        pedidoCriado.setStatus("Registrado");
+                        if(livro.temEstoque(quantidade)) {
+                            ItemPedido item = new ItemPedido(quantidade, livro);
+                            livro.atualizandoEstoque(quantidade);
+                            pedidoCriado.add(item);
+                            pedidoCriado.setStatus("Registrado");
+                        } else {
+                            System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
+                        }
                     }
                     break;
                 case 2:
@@ -331,17 +313,38 @@ public class Principal {
                         LivroComum livro = pegaLivroComum();
                         System.out.println("\nQuantas unidades? \n");
                         int quantidade = leitor.nextInt();
-                        ItemPedido item = new ItemPedido(quantidade, livro);
-                        pedidoCriado.add(item);
-                        pedidoCriado.setStatus("Registrado");
+                        if(livro.temEstoque(quantidade)){
+                            ItemPedido item = new ItemPedido(quantidade, livro);
+                            livro.atualizandoEstoque(quantidade);
+                            livro.calcIndiceRaridade();
+                            pedidoCriado.add(item);
+                            pedidoCriado.setStatus("Registrado");
+                        } else {
+                            System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
+                        }
                     }
                     break;
                 case 3:
+                    pedidoCriado.listarItens();
+                    System.out.println("\nQual posição do item que desenha remover? \n");
+                    int posicao = leitor.nextInt();
+                    System.out.println("\nConfirme para remover o livro "+ pedidoCriado.listarItem(posicao) +" Sim(1) / Não(2)\n");
+                    int confirmaRemover= leitor.nextInt();
+                    if(confirmaRemover>1){
+                        System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
+                    } else {
+
+//                         pedidoCriado.quantidadeItem(posicao);
+                        System.out.println("\nO livro "+ pedidoCriado.listarItem(posicao) + ", foi removido.\n");
+                        pedidoCriado.removerItem(posicao);
+                    }
+                    break;
+                case 4:
                     pedidoCriado.setStatus("Finalizado");
                     pedidos.add(pedidoCriado);
                     escolha = 99;
                     break;
-                case 4:
+                case 5:
                     escolha = 99;
                     break;
                 case 50:
@@ -374,6 +377,7 @@ public class Principal {
                 System.out.println("\nNão há livros comuns cadastrados.");
             } else {
                 System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("---------------Livros Comuns---------------\n");
                 for (LivroComum livroComum : livrosComuns) {
                     System.out.println("\nId do Livro: " + livroComum.getIdLivro());
                     System.out.println("Título: " + livroComum.getTitulo());
@@ -393,6 +397,7 @@ public class Principal {
                 System.out.println("\nNão há livros comuns cadastrados.");
             } else {
                 System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
+                System.out.print("--------------Livros Tecnicos--------------\n");
                 for (LivroTecnico livroTecnico : livrosTecnicos) {
                     System.out.println("\nId do Livro: " + livroTecnico.getIdLivro());
                     System.out.println("Título: " + livroTecnico.getTitulo());
@@ -402,7 +407,6 @@ public class Principal {
                     System.out.println("Quantidade em estoque: " + livroTecnico.getQntdEstoque());
                     System.out.println("Valor: " + livroTecnico.getValorTabela());
                     System.out.println("Valor adicional: " + livroTecnico.getValorAdicional());
-                    System.out.print("\n><><><><><><><><><><><><><><><><><><><><><>\n");
                 }
             }
     }
@@ -426,8 +430,6 @@ public class Principal {
     public static void main(String[] args) {
         short opcao;
         short opcaoLivros;
-        short opcaoLivrosTec;
-        short opcaoLivrosCom;
         short opcaoClientes;
         short opcaoEditarClie;
         short opcaoPedidos;
@@ -535,75 +537,10 @@ public class Principal {
 
                         switch (opcaoLivros) {
                             case 1:
-                                do {
-                                    menu.livrosTecnicos();
-
-                                    System.out.print("Opção escolhida: \n");
-                                    opcaoLivrosTec = leitor.nextShort();
-                                    switch (opcaoLivrosTec) {
-                                        case 1:
-                                            menu.cadastrarLivroTecnico();
-                                            break;
-                                        case 2:
-                                            break;
-                                        case 3:
-                                            opcaoLivrosTec = 99;
-                                            opcaoLivros = 50;
-                                            break;
-                                        case 50:
-                                            menu.livrosTecnicos();
-                                            break;
-                                        case 99:
-                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                            int confirmaSair = leitor.nextShort();
-                                            if(confirmaSair>1){
-                                                opcaoLivrosTec = 50;
-                                            } else {
-                                                System.out.print("Programa finalizado.");
-                                                opcaoLivros = 99;
-                                                opcao = 99;
-                                            }
-                                            break;
-                                        default:
-                                            System.out.print("Esse número não é válido. \n");
-                                    }
-
-                                }while (opcaoLivrosTec != 99);
+                                menu.cadastrarLivroTecnico();
                                 break;
                             case 2:
-                                do {
-                                    menu.livrosComuns();
-
-                                    System.out.print("Opção escolhida: \n");
-                                    opcaoLivrosCom = leitor.nextShort();
-                                    switch (opcaoLivrosCom) {
-                                        case 1:
-                                            menu.cadastrarLivroComum();
-                                            break;
-                                        case 2:
-                                            break;
-                                        case 3:
-                                            opcaoLivrosCom = 99;
-                                            opcaoLivros = 50;
-                                            break;
-                                        case 50:
-                                            menu.livrosComuns();
-                                            break;
-                                        case 99:
-                                            System.out.print("Quer mesmo sair? Sim(1) / Não(2) \n");
-                                            int confirmaSair = leitor.nextShort();
-                                            if(confirmaSair>1){
-                                                opcaoLivrosCom = 50;
-                                            } else {
-                                                System.out.print("Programa finalizado.");
-                                                opcaoLivros = 99;
-                                                opcao = 99;
-                                            }
-                                            break;
-                                        default:
-                                            System.out.print("Esse número não é válido. \n");
-                                    }
-                                }while (opcaoLivrosCom != 99);
+                                menu.cadastrarLivroComum();
                                 break;
                             case 3:
                                 opcaoLivros = 99;

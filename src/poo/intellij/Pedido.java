@@ -30,6 +30,25 @@ public class Pedido {
             System.out.printf("%s, %d un. valor total R$ %.2f\n", item.getLivro().getTitulo(), item.getQuantidade(), item.calcularTotalLivro());
         };
     }
+
+    public void listarItens() {
+        for(int i=0; i<pedido.size(); i++){
+            System.out.printf("%d - %d un. - %s \n", i, pedido.get(i).getQuantidade(), pedido.get(i).getLivro().getTitulo());
+        };
+    }
+
+    public String listarItem(int posicao){
+    return pedido.get(posicao).getLivro().getTitulo();
+    }
+
+    public int quantidadeItem(int posicao){
+        return pedido.get(posicao).getQuantidade();
+    }
+
+    public void removerItem(int posicao){
+        pedido.remove(posicao);
+    }
+
     public double valorTotalPedido() {
         double valor = 0.00;
         for(ItemPedido item: pedido){

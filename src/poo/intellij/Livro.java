@@ -48,4 +48,19 @@ public abstract class Livro {
     public int getAnoPublicacao() {
         return anoPublicacao;
     }
+
+    public void setQntdEstoque(int qntdEstoque) {
+        this.qntdEstoque = qntdEstoque;
+    }
+    public boolean temEstoque(int qntdVendida){
+        return ((this.qntdEstoque-qntdVendida)>0 ? true : false);
+    }
+
+    public void atualizandoEstoque(int qntdVendida){
+        setQntdEstoque(this.qntdEstoque-qntdVendida);
+    }
+
+    public void devolverEstoque(int qntd){
+        setQntdEstoque(this.qntdEstoque+qntd);
+    }
 }
