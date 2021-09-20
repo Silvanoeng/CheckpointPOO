@@ -1,5 +1,7 @@
 package poo.intellij;
 
+// Criação da classe LivroComum
+
 public class LivroComum extends Livro implements Comparable <LivroComum> {
     private int indiceRaridade;
 

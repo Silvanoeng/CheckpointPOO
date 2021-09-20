@@ -2,7 +2,8 @@ package poo.intellij;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+
+// Criação da classe Pedido
 
 public class Pedido {
     private Cliente cliente;
@@ -10,18 +11,30 @@ public class Pedido {
     private LocalDate data;
     private String status;
 
+    // Construtor da classe Pedido
+
     public Pedido(Cliente cliente, LocalDate data, String status) {
         this.cliente = cliente;
         this.data = data;
         this.status = status;
     }
 
+    // Getters
+
     public Cliente getCliente() {
         return cliente;
     }
+    public LocalDate getData() {
+        return data;
+    }
+    public String getStatus() {
+        return status;
+    }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    // Setter
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 
@@ -31,9 +44,21 @@ public class Pedido {
         };
     }
 
-    public void devolverLivro(int posicao, int quantidade){
+    // Função criada para que o usuário possa excluir o item do pedido
+
+    public void desistirDoItem(int posicao, int quantidade){
         pedido.get(posicao).getLivro().devolverEstoque(quantidade);
     }
+
+    // Função criada para ser usada quando o usuário sai do pedido sem finalizar a compra
+
+    public void desistirDaCompra() {
+        for(int i=0; i<pedido.size(); i++){
+            pedido.get(i).getLivro().devolverEstoque(pedido.get(i).getQuantidade());;
+        };
+    }
+
+    // Funções usadas para listar os itens, antes da remoção de um item do pedido
 
     public void listarItens() {
         for(int i=0; i<pedido.size(); i++){
@@ -41,23 +66,25 @@ public class Pedido {
         };
     }
 
-    public void devolverItens() {
-        for(int i=0; i<pedido.size(); i++){
-            pedido.get(i).getLivro().devolverEstoque(pedido.get(i).getQuantidade());;
-        };
-    }
-
-    public String listarItem(int posicao){
+    public String listarItemParaRemover(int posicao){
     return pedido.get(posicao).getLivro().getTitulo();
     }
+
+
+
+    // Função criada para pegar a quantidade
 
     public int quantidadeItem(int posicao){
         return pedido.get(posicao).getQuantidade();
     }
 
+    // Função criada para remover um item
+
     public void removerItem(int posicao){
         pedido.remove(posicao);
     }
+
+    // Função criada para calcular e apresentar o valor total do pedido
 
     public double valorTotalPedido() {
         double valor = 0.00;
@@ -67,25 +94,10 @@ public class Pedido {
         return valor;
     }
 
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    // Função criada para adicionar um item pedido ao pedido
 
     public void add(ItemPedido itemPedido) {
         pedido.add(itemPedido);
     }
-
 
 }
