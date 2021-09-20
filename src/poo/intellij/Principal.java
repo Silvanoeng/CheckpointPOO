@@ -304,7 +304,6 @@ public class Principal {
         int contLivroPedido = 0;
         short opcaoEscolha;
         do {
-
             exibirLivrosPedido();
             System.out.print("Opção escolhida: \n");
             opcaoEscolha = leitor.nextShort();
