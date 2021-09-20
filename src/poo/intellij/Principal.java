@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Principal {
 
-//    Criação de arrayList para armazenar objetos criados durante a execução da aplicação.
     List<Cliente> clientes = new ArrayList<>();
     List<Pedido> pedidos = new ArrayList<>();
     List<LivroComum> livrosComuns = new ArrayList<>();
@@ -62,6 +61,7 @@ public class Principal {
         System.out.println("*******************************************");
     }
 
+
     private void exibirLivrosPedido(){
         System.out.println("\n*******************************************");
         System.out.println("||      >>>   Menu de Pedido   <<<       ||");
@@ -70,7 +70,6 @@ public class Principal {
         System.out.println("||    02 - Acrescentar Livros Comuns     ||");
         System.out.println("||    03 - Remover item do pedido        ||");
         System.out.println("||    04 - Finalizar Pedido              ||");
-        System.out.println("||    05 - Excluir Pedido                ||");
         System.out.println("||    99 - Voltar                        ||");
         System.out.println("*******************************************");
     }
@@ -267,16 +266,6 @@ public class Principal {
         return livrosComuns.get(posicao);
     }
 
-    private void listarPedidos(){
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-        int posicaoArray = pedidos.size();
-        System.out.print("\nLista dos pedidos. \n");
-        for (int i=0; i<posicaoArray; i++) {
-            System.out.printf("Posição %d- %s\n", i, pedidos.get(i));
-        }
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-    }
-
     private void cadastrarPedido(){
         Scanner leitor = new Scanner(System.in);
         listarClientes();
@@ -290,7 +279,6 @@ public class Principal {
             System.out.print("Opção escolhida: \n");
             escolha = leitor.nextShort();
             int contLivroPedido = 0;
-            int posicao = 0;
 
             switch (escolha) {
                 case 1:
@@ -340,13 +328,13 @@ public class Principal {
                     if(contLivroPedido > 0) {
                         pedidoCriado.listarItens();
                         System.out.println("Qual posição do item que desenha remover? \n");
-                        posicao = leitor.nextInt();
+                        int posicao = leitor.nextInt();
                         System.out.println("Confirme para remover o livro " + pedidoCriado.listarItem(posicao) + " Sim(1) / Não(2)\n");
                         int confirmaRemover = leitor.nextInt();
                         if (confirmaRemover > 1) {
                             System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
                         } else {
-                            pedidoCriado.desistirDoItem(posicao, pedidoCriado.quantidadeItem(posicao));
+                            pedidoCriado.devolverLivro(posicao, pedidoCriado.quantidadeItem(posicao));
                             System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", foi removido.\n");
                             pedidoCriado.removerItem(posicao);
                             contLivroPedido--;
@@ -365,22 +353,12 @@ public class Principal {
                         System.out.println("Não existe pedido registrado.");
                     }
                     break;
-                case 5:
-                    if (pedidos.isEmpty()) {
-                        System.out.print("Nenhum pedido cadastrado.");
-                    } else {
-                        listarPedidos();
-                        System.out.print("Informe a posição do pedido que deseja excluir: \n");
-                        posicao = leitor.nextInt();
-                        pedidos.remove(posicao);
-                    }
-                    break;
                 case 50:
                     exibirLivrosPedido();
                     break;
                 case 99:
                     if (contLivroPedido>0){
-                        pedidoCriado.desistirDaCompra();
+                        pedidoCriado.devolverItens();
                         contLivroPedido=0;
                     }
                     break;

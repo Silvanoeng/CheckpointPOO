@@ -1,5 +1,7 @@
 package poo.intellij;
 
+// Criação da classe ItemPedido
+
 public class ItemPedido {
     private int quantidade;
     private Livro livro;
