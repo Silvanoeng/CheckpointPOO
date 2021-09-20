@@ -1,6 +1,6 @@
 package poo.intellij;
 
-public class LivroComum extends Livro <LivroComum> {
+public class LivroComum extends Livro {
     private int indiceRaridade;
 
 //    Constructor

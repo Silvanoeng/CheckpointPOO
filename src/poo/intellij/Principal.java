@@ -15,6 +15,8 @@ public class Principal {
     List<LivroComum> livrosComuns = new ArrayList<>();
     List<LivroTecnico> livrosTecnicos = new ArrayList<>();
 
+//    Menus
+
     private void exibirMenu(){
         System.out.println("\n*******************************************");
         System.out.println("||      >>>   Menu de Opções   <<<       ||");
@@ -73,6 +75,7 @@ public class Principal {
         System.out.println("||    02 - Acrescentar Livros Comuns     ||");
         System.out.println("||    03 - Remover item do pedido        ||");
         System.out.println("||    04 - Finalizar Pedido              ||");
+        System.out.println("||    05 - Excluir Pedido                ||");
         System.out.println("||    99 - Voltar                        ||");
         System.out.println("*******************************************");
     }
@@ -88,6 +91,8 @@ public class Principal {
         System.out.println("||        99 - Voltar                   ||");
         System.out.println("*******************************************");
     }
+
+    // Cadastro e Edição do Cliente
 
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
@@ -109,7 +114,7 @@ public class Principal {
             System.out.print("E-mail: \n");
             String email = leitor.next();
 
-            System.out.print("O cadastro de " + nome + " esta ativo. \n");
+            System.out.print("O cadastro de " + nome + " está ativo. \n");
 
             Cliente cliente = new Cliente(id, nome, email, true);
 
@@ -119,7 +124,7 @@ public class Principal {
         }
     }
 
-    private Cliente pegaCliente() {
+    private Cliente pegarCliente() {
         Scanner leitor = new Scanner(System.in);
         System.out.print("\nInforme a posição do cliente: \n");
         int posicao = leitor.nextInt();
@@ -172,6 +177,8 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
+    // Cadastro do LivroComum
+
     private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
@@ -202,6 +209,8 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         livrosComuns.add(livroComum);
     }
+
+    // Cadastro do LivroTecnico
 
     private void cadastrarLivroTecnico(){
         Scanner leitor = new Scanner(System.in);
@@ -236,6 +245,8 @@ public class Principal {
         livrosTecnicos.add(livroTecnico);
     }
 
+    // Lista do LivroComum
+
     private void listarLivroComum(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosComuns.size();
@@ -245,13 +256,15 @@ public class Principal {
         }
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
-
-    private LivroTecnico pegaLivroTecnico() {
+    private LivroComum pegarLivroComum() {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\nInforme a posição do LivroTecnico: \n");
+        System.out.print("\nInforme a posição do LivroComum:\n");
         int posicao = leitor.nextInt();
-        return livrosTecnicos.get(posicao);
+        return livrosComuns.get(posicao);
     }
+
+    // Lista do LivroTecnico
+
     private void listarLivroTecnico(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosTecnicos.size();
@@ -262,28 +275,43 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
-    private LivroComum pegaLivroComum() {
+    private LivroTecnico pegarLivroTecnico() {
         Scanner leitor = new Scanner(System.in);
-        System.out.print("\nInforme a posição do LivroComum:\n");
+        System.out.print("\nInforme a posição do LivroTecnico: \n");
         int posicao = leitor.nextInt();
-        return livrosComuns.get(posicao);
+        return livrosTecnicos.get(posicao);
     }
+
+    // Lista do pedido
+
+    private void listarPedido(){
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
+        int posicaoArray = pedidos.size();
+        System.out.print("\nLista dos pedidos. \n");
+        for (int i=0; i<posicaoArray; i++) {
+            System.out.printf("Posição %d- %s\n", i, pedidos.get(i));
+        }
+        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
+    }
+
+    // Cadastro do Pedido
 
     private void cadastrarPedido(){
         Scanner leitor = new Scanner(System.in);
         listarClientes();
-        Cliente clientepedido = pegaCliente();
+        Cliente clientepedido = pegarCliente();
         Pedido pedidoCriado = new Pedido(clientepedido, LocalDate.now(),"Pendente");
-
-        short escolha;
+        int contLivroPedido = 0;
+        short opcaoEscolha;
         do {
 
             exibirLivrosPedido();
             System.out.print("Opção escolhida: \n");
-            escolha = leitor.nextShort();
-            int contLivroPedido = 0;
+            opcaoEscolha = leitor.nextShort();
 
-            switch (escolha) {
+            int posicao = 0;
+
+            switch (opcaoEscolha) {
                 case 1:
                     if (livrosTecnicos.isEmpty()) {
                         System.out.println("Nenhum livro tecnico cadastrado.\n");
@@ -291,7 +319,7 @@ public class Principal {
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroTecnico();
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-                        LivroTecnico livro = pegaLivroTecnico();
+                        LivroTecnico livro = pegarLivroTecnico();
                         System.out.println("Quantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         if(livro.temEstoque(quantidade)) {
@@ -312,7 +340,7 @@ public class Principal {
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
                         listarLivroComum();
                         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-                        LivroComum livro = pegaLivroComum();
+                        LivroComum livro = pegarLivroComum();
                         System.out.println("Quantas unidades? \n");
                         int quantidade = leitor.nextInt();
                         if(livro.temEstoque(quantidade)){
@@ -322,6 +350,7 @@ public class Principal {
                             pedidoCriado.add(item);
                             pedidoCriado.setStatus("Registrado");
                             contLivroPedido++;
+                            System.out.println("O livro " + livro.getTitulo() + " foi adicionado ao seu pedido.");
                         } else {
                             System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
                         }
@@ -331,14 +360,14 @@ public class Principal {
                     if(contLivroPedido > 0) {
                         pedidoCriado.listarItens();
                         System.out.println("Qual posição do item que desenha remover? \n");
-                        int posicao = leitor.nextInt();
-                        System.out.println("Confirme para remover o livro " + pedidoCriado.listarItem(posicao) + " Sim(1) / Não(2)\n");
+                        posicao = leitor.nextInt();
+                        System.out.println("Confirme para remover o livro " + pedidoCriado.listarItemParaRemover(posicao) + " Sim(1) / Não(2)\n");
                         int confirmaRemover = leitor.nextInt();
                         if (confirmaRemover > 1) {
-                            System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", não foi removido.\n");
+                            System.out.println("O livro " + pedidoCriado.listarItemParaRemover(posicao) + ", não foi removido.\n");
                         } else {
-                            pedidoCriado.devolverLivro(posicao, pedidoCriado.quantidadeItem(posicao));
-                            System.out.println("O livro " + pedidoCriado.listarItem(posicao) + ", foi removido.\n");
+                            pedidoCriado.desistirDoItem(posicao, pedidoCriado.quantidadeItem(posicao));
+                            System.out.println("O livro " + pedidoCriado.listarItemParaRemover(posicao) + ", foi removido.\n");
                             pedidoCriado.removerItem(posicao);
                             contLivroPedido--;
                         }
@@ -351,9 +380,19 @@ public class Principal {
                         pedidoCriado.setStatus("Finalizado");
                         pedidos.add(pedidoCriado);
                         contLivroPedido = 0;
-                        escolha = 99;
+                        opcaoEscolha = 99;
                     } else {
-                        System.out.println("Não existe pedido registrado.");
+                        System.out.println("Não existe pedido finalizado.");
+                    }
+                    break;
+                case 5:
+                    if (pedidos.isEmpty()) {
+                        System.out.print("Nenhum pedido cadastrado.");
+                    } else {
+                        listarPedido();
+                        System.out.print("Informe a posição do pedido que deseja excluir: \n");
+                        posicao = leitor.nextInt();
+                        pedidos.remove(posicao);
                     }
                     break;
                 case 50:
@@ -361,15 +400,19 @@ public class Principal {
                     break;
                 case 99:
                     if (contLivroPedido>0){
-                        pedidoCriado.devolverItens();
+                        pedidoCriado.desistirDaCompra();
                         contLivroPedido=0;
                     }
                     break;
                 default:
                     System.out.println("Esse número não é válido. \n");
             }
-        }while (escolha!=99);
+        } while (opcaoEscolha != 99);
     }
+
+    // Impressões
+
+    // Imprimir Cliente
 
     private void imprimirCliente(){
 
@@ -386,6 +429,8 @@ public class Principal {
             }
         }
     }
+
+    // Imprimir LivroComum
 
     private void imprimirLivroComum(){
             if (livrosComuns.isEmpty()){
@@ -407,6 +452,8 @@ public class Principal {
             }
     }
 
+    // Imprimir Livro Tecnico
+
     private void imprimirLivroTecnico(){
             if (livrosTecnicos.isEmpty()){
                 System.out.println("Não há livros comuns cadastrados.");
@@ -426,6 +473,8 @@ public class Principal {
             }
     }
 
+    // Imprimir Pedidos
+
     private void imprimirPedidos(){
         if (pedidos.isEmpty()){
             System.out.println("Não há pedidos cadastrados.");
@@ -441,6 +490,9 @@ public class Principal {
             }
         }
     }
+
+// ----------------------------------------------------------------------
+    // Switch cases -- Condicionais para o Menu
 
     public static void main(String[] args) {
         short opcao;
@@ -532,7 +584,7 @@ public class Principal {
                                 System.out.print("Esse número não é válido. \n");
                                 menu.exibirClientes();
                         }
-                    }while(opcaoClientes != 99);
+                    } while (opcaoClientes != 99);
                     break;
                 case 2:
                     do {
@@ -588,7 +640,7 @@ public class Principal {
                             default:
                                 System.out.print("Esse número não é válido. \n");
                         }
-                    }while(opcaoLivros != 99);
+                    } while (opcaoLivros != 99);
                     break;
                 case 3:
                     do {
@@ -619,7 +671,7 @@ public class Principal {
                                 System.out.print("Esse número não é válido. \n");
                         }
 
-                    }while (opcaoPedidos != 99);
+                    } while (opcaoPedidos != 99);
                     break;
                 case 50:
                     menu.exibirMenu();
@@ -636,7 +688,7 @@ public class Principal {
                 default:
                     System.out.print("Esse número não é válido. \n");
             }
-        }while(opcao != 99);
+        } while (opcao != 99);
         leitor.close();
     }
 }
