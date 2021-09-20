@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class Principal {
 
+
+    // Criação de ArraysLists
+
     List<Cliente> clientes = new ArrayList<>();
     List<Pedido> pedidos = new ArrayList<>();
     List<LivroComum> livrosComuns = new ArrayList<>();
