@@ -568,7 +568,14 @@ public class Principal {
                                     menu.listarClientes();
                                     System.out.print("Informe a posição do cliente que deseja excluir: \n");
                                     posicao = leitor.nextInt();
-                                    menu.clientes.remove(posicao);
+                                    System.out.println("Confirme para remover o cliente. Sim(1) / Não(2)\n");
+                                    int confirmaRemover = leitor.nextInt();
+                                    if (confirmaRemover > 1) {
+                                        System.out.println("O cliente não foi removido.\n");
+                                    } else {
+                                        menu.clientes.remove(posicao);
+                                        System.out.println("O cliente foi removido.\n");
+                                    }
                                 }
                                 break;
                             case 50:
@@ -600,7 +607,14 @@ public class Principal {
                                     menu.listarLivroTecnico();
                                     System.out.print("Informe a posição do livro tecnico que deseja excluir: \n");
                                     posicao = leitor.nextInt();
-                                    menu.livrosTecnicos.remove(posicao);
+                                    System.out.println("Confirme para remover o livro tecnico. Sim(1) / Não(2)\n");
+                                    int confirmaRemover = leitor.nextInt();
+                                    if (confirmaRemover > 1) {
+                                        System.out.println("O livro tecnico não foi removido.\n");
+                                    } else {
+                                        menu.livrosTecnicos.remove(posicao);
+                                        System.out.println("O livro tecnico foi removido.\n");
+                                    }
                                 }
                                 break;
                             case 3:
@@ -613,7 +627,15 @@ public class Principal {
                                     menu.listarLivroComum();
                                     System.out.print("Informe a posição do livro comum que deseja excluir: \n");
                                     posicao = leitor.nextInt();
-                                    menu.livrosComuns.remove(posicao);
+                                    System.out.println("Confirme para remover o livro comum. Sim(1) / Não(2)\n");
+                                    int confirmaRemover = leitor.nextInt();
+                                    if (confirmaRemover > 1) {
+                                        System.out.println("O livro comum não foi removido.\n");
+                                    } else {
+                                        menu.livrosComuns.remove(posicao);
+                                        System.out.println("O livro comum foi removido.\n");
+                                    }
+
                                 }
                                 break;
                             case 5:
@@ -665,7 +687,14 @@ public class Principal {
                                     menu.listarPedido();
                                     System.out.print("Informe a posição do pedido que deseja excluir: \n");
                                     posicao = leitor.nextInt();
-                                    menu.pedidos.remove(posicao);
+                                    System.out.println("Confirme para remover o pedido. Sim(1) / Não(2)\n");
+                                    int confirmaRemover = leitor.nextInt();
+                                    if (confirmaRemover > 1) {
+                                        System.out.println("O pedido não foi removido.\n");
+                                    } else {
+                                        menu.pedidos.remove(posicao);
+                                        System.out.println("O pedido foi removido.\n");
+                                    }
                                 }
                                 break;
                             case 50:
