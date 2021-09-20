@@ -327,6 +327,7 @@ public class Principal {
                             pedidoCriado.add(item);
                             pedidoCriado.setStatus("Registrado");
                             contLivroPedido++;
+                            System.out.println("O livro " + livro.getTitulo() + " foi adicionado ao seu pedido.");
                         } else {
                             System.out.println("O livro " + livro.getTitulo() + " tem somente " + livro.getQntdEstoque() + " un. em estoque, refaça o pedido.");
                         }
