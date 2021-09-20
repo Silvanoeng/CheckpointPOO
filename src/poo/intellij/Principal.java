@@ -8,14 +8,14 @@ import java.util.Scanner;
 public class Principal {
 
 
-    // Criação de ArraysLists
+    // Criação de ArraysLists para gurdar os objetos criados
 
     List<Cliente> clientes = new ArrayList<>();
     List<Pedido> pedidos = new ArrayList<>();
     List<LivroComum> livrosComuns = new ArrayList<>();
     List<LivroTecnico> livrosTecnicos = new ArrayList<>();
 
-//    Menus
+//    Menus criados para interface da aplicação
 
     private void exibirMenu(){
         System.out.println("\n*******************************************");
@@ -92,7 +92,7 @@ public class Principal {
         System.out.println("*******************************************");
     }
 
-    // Cadastro e Edição do Cliente
+    // Metodo criado para Cadastro de Clientes
 
     private void cadastrarCliente(){
         Scanner leitor = new Scanner(System.in);
@@ -123,6 +123,8 @@ public class Principal {
             System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         }
     }
+
+    // Metodos criados para editar um Cliente criado
 
     private Cliente pegarCliente() {
         Scanner leitor = new Scanner(System.in);
@@ -177,7 +179,7 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
-    // Cadastro do LivroComum
+    // Metodo criado para Cadastro de Livro Comum
 
     private void cadastrarLivroComum(){
         Scanner leitor = new Scanner(System.in);
@@ -210,7 +212,7 @@ public class Principal {
         livrosComuns.add(livroComum);
     }
 
-    // Cadastro do LivroTecnico
+    /// Metodo criado para Cadastro de Livro Tecnico
 
     private void cadastrarLivroTecnico(){
         Scanner leitor = new Scanner(System.in);
@@ -245,7 +247,7 @@ public class Principal {
         livrosTecnicos.add(livroTecnico);
     }
 
-    // Lista do LivroComum
+    // Metodo criado para Listar os Livros Comuns
 
     private void listarLivroComum(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
@@ -256,6 +258,9 @@ public class Principal {
         }
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
+
+    // Metodo criado para capturar a posição do Livro Comum que o usuario deseja
+
     private LivroComum pegarLivroComum() {
         Scanner leitor = new Scanner(System.in);
         System.out.print("\nInforme a posição do LivroComum:\n");
@@ -263,7 +268,7 @@ public class Principal {
         return livrosComuns.get(posicao);
     }
 
-    // Lista do LivroTecnico
+    // Metodo criado para Listar os Livros Tecnico
 
     private void listarLivroTecnico(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
@@ -275,6 +280,8 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
+    // Metodo criado para capturar a posição do Livro Comum que o usuario deseja
+
     private LivroTecnico pegarLivroTecnico() {
         Scanner leitor = new Scanner(System.in);
         System.out.print("\nInforme a posição do LivroTecnico: \n");
@@ -282,7 +289,7 @@ public class Principal {
         return livrosTecnicos.get(posicao);
     }
 
-    // Lista do pedido
+    // Metodo criado para Listar os Pedidos
 
     private void listarPedido(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
@@ -294,7 +301,7 @@ public class Principal {
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
-    // Cadastro do Pedido
+    // Metodo criado para Cadastrar Pedido
 
     private void cadastrarPedido(){
         Scanner leitor = new Scanner(System.in);
@@ -410,9 +417,10 @@ public class Principal {
         } while (opcaoEscolha != 99);
     }
 
-    // Impressões
+    // ----------------------------------------------------------------------
+    // Metodos criados para Impressões
 
-    // Imprimir Cliente
+    // Metodo criado para Imprimir Cliente
 
     private void imprimirCliente(){
 
@@ -430,7 +438,7 @@ public class Principal {
         }
     }
 
-    // Imprimir LivroComum
+    // Metodo criado para Imprimir Livro Comum
 
     private void imprimirLivroComum(){
             if (livrosComuns.isEmpty()){
@@ -452,7 +460,7 @@ public class Principal {
             }
     }
 
-    // Imprimir Livro Tecnico
+    // Metodo criado para Imprimir Livro Tecnico
 
     private void imprimirLivroTecnico(){
             if (livrosTecnicos.isEmpty()){
@@ -473,7 +481,7 @@ public class Principal {
             }
     }
 
-    // Imprimir Pedidos
+    // Metodo criado para Imprimir Pedido
 
     private void imprimirPedidos(){
         if (pedidos.isEmpty()){
