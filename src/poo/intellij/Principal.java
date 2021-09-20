@@ -289,11 +289,10 @@ public class Principal {
 
     private void listarPedido(){
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
-        int posicaoArray = pedidos.size();
         System.out.print("\nLista dos pedidos. \n");
-        for (int i=0; i<posicaoArray; i++) {
+        for (int i=0; i<pedidos.size(); i++) {
             System.out.printf("Posição %d- pedido de %s\n", i, pedidos.get(i).getCliente().getNome());
-            for(int item=0; item<pedidos.size(); item++) {
+            for(int item=0; item<pedidos.get(i).getPedido().size(); item++) {
                 System.out.println( pedidos.get(i).getPedido().get(item).getLivro().getTitulo());
             }
         }
