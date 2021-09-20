@@ -24,6 +24,9 @@ public class Pedido {
     public Cliente getCliente() {
         return cliente;
     }
+    public ArrayList<ItemPedido> getPedido() {
+        return pedido;
+    }
     public LocalDate getData() {
         return data;
     }
@@ -36,7 +39,6 @@ public class Pedido {
     public void setStatus(String status) {
         this.status = status;
     }
-
 
     public void mostrarPedidos() {
         for(ItemPedido item: pedido){

@@ -75,7 +75,7 @@ public class Principal {
         System.out.println("||    02 - Acrescentar Livros Comuns     ||");
         System.out.println("||    03 - Remover item do pedido        ||");
         System.out.println("||    04 - Finalizar Pedido              ||");
-        System.out.println("||    05 - Excluir Pedido                ||");
+        System.out.println("||                                       ||");
         System.out.println("||    99 - Voltar                        ||");
         System.out.println("*******************************************");
     }
@@ -86,9 +86,9 @@ public class Principal {
         System.out.println("*******************************************");
         System.out.println("||        01 - Cadastrar Pedido          ||");
         System.out.println("||        02 - Imprimir Pedidos          ||");
+        System.out.println("||        03 - Excluir Pedido            ||");
         System.out.println("||                                       ||");
-        System.out.println("||                                       ||");
-        System.out.println("||        99 - Voltar                   ||");
+        System.out.println("||        99 - Voltar                    ||");
         System.out.println("*******************************************");
     }
 
@@ -296,7 +296,10 @@ public class Principal {
         int posicaoArray = pedidos.size();
         System.out.print("\nLista dos pedidos. \n");
         for (int i=0; i<posicaoArray; i++) {
-            System.out.printf("Posição %d- %s\n", i, pedidos.get(i));
+            System.out.printf("Posição %d- pedido de %s\n", i, pedidos.get(i).getCliente().getNome());
+            for(int item=0; item<pedidos.size(); item++) {
+                System.out.println( pedidos.get(i).getPedido().get(item).getLivro().getTitulo());
+            }
         }
         System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
@@ -392,16 +395,6 @@ public class Principal {
                         System.out.println("Não existe pedido finalizado.");
                     }
                     break;
-                case 5:
-                    if (pedidos.isEmpty()) {
-                        System.out.print("Nenhum pedido cadastrado.");
-                    } else {
-                        listarPedido();
-                        System.out.print("Informe a posição do pedido que deseja excluir: \n");
-                        posicao = leitor.nextInt();
-                        pedidos.remove(posicao);
-                    }
-                    break;
                 case 50:
                     exibirLivrosPedido();
                     break;
@@ -491,7 +484,7 @@ public class Principal {
             for (Pedido pedido : pedidos) {
                 System.out.println("Cliente: " + pedido.getCliente().getNome());
                 pedido.mostrarPedidos();
-                System.out.printf("Valor total do pedido: %f.2.", pedido.valorTotalPedido());
+                System.out.printf("Valor total do pedido: %.2f.\n", pedido.valorTotalPedido());
                 System.out.println("Data do pedido: " + pedido.getData());
                 System.out.println("Situação: " + pedido.getStatus());
                 System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
@@ -669,6 +662,16 @@ public class Principal {
                                 break;
                             case 2:
                                 menu.imprimirPedidos();
+                                break;
+                            case 3:
+                                if (menu.pedidos.isEmpty()) {
+                                    System.out.print("Nenhum pedido cadastrado.");
+                                } else {
+                                    menu.listarPedido();
+                                    System.out.print("Informe a posição do pedido que deseja excluir: \n");
+                                    posicao = leitor.nextInt();
+                                    menu.pedidos.remove(posicao);
+                                }
                                 break;
                             case 50:
                                 menu.pedidos();
