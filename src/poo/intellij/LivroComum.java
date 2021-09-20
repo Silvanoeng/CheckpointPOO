@@ -1,16 +1,24 @@
 package poo.intellij;
 
-public class LivroComum extends Livro implements Comparable <LivroComum> {
+public class LivroComum extends Livro <LivroComum> {
     private int indiceRaridade;
 
+//    Constructor
     public LivroComum(int idLivro, String titulo, String autor, String editora, int anoPublicacao, int qntdEstoque, double valorTabela) {
         super(idLivro, titulo, autor, editora, anoPublicacao, qntdEstoque, valorTabela);
     }
 
+//    Get
+    public int getIndiceRaridade() {
+        return indiceRaridade;
+    }
+
+//    Set
     public void setIndiceRaridade(int indiceRaridade) {
         this.indiceRaridade = indiceRaridade;
     }
 
+//    Calcula o indice de raridade para dar o set no atributo.
     public void calcIndiceRaridade(){
         if (this.getQntdEstoque() < 10)
             setIndiceRaridade (6);
@@ -20,27 +28,10 @@ public class LivroComum extends Livro implements Comparable <LivroComum> {
             setIndiceRaridade (0);
     }
 
+//    Sobreescrita do metodo da classe abstrata.
     @Override
     public double calcPreco(){
         return this.getValorTabela();
-    }
-
-    public int getIndiceRaridade() {
-        return indiceRaridade;
-    }
-
-    @Override
-    public int compareTo(LivroComum livroComum){
-        if(this.indiceRaridade == livroComum.getIndiceRaridade()){
-            System.out.println("Ambos os livros são igualmente raros.");
-            return 0;
-        } else if(this.indiceRaridade > livroComum.getIndiceRaridade()){
-            System.out.println("Esse livro é mais raro, portanto, não espere para comprá-lo, pois não há muitos no estoque.");
-            return 1;
-        } else{
-            System.out.println("Esse livro é menos raro, portanto, ainda há uma boa quantidade no estoque.");
-            return -1;
-        }
     }
 
 }
