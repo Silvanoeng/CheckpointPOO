@@ -69,7 +69,7 @@ public class Principal {
 
     private void exibirLivrosPedido(){
         System.out.println("\n*******************************************");
-        System.out.println("||      >>>   Menu de Pedido   <<<       ||");
+        System.out.println("||  >>>   Menu de Itens Pedidos   <<<    ||");
         System.out.println("*******************************************");
         System.out.println("||    01 - Acrescentar Livros Tecnicos   ||");
         System.out.println("||    02 - Acrescentar Livros Comuns     ||");
