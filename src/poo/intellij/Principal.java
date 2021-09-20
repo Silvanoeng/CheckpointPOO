@@ -250,13 +250,11 @@ public class Principal {
     // Metodo criado para Listar os Livros Comuns
 
     private void listarLivroComum(){
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosComuns.size();
         System.out.print("\nLista dos livros comuns. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d - %s\n", i, livrosComuns.get(i).getTitulo());
         }
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     // Metodo criado para capturar a posição do Livro Comum que o usuario deseja
@@ -271,13 +269,11 @@ public class Principal {
     // Metodo criado para Listar os Livros Tecnico
 
     private void listarLivroTecnico(){
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
         int posicaoArray = livrosTecnicos.size();
         System.out.print("\nLista dos livros tecnicos. \n");
         for (int i=0; i<posicaoArray; i++) {
             System.out.printf("Posição %d - %s\n", i, livrosTecnicos.get(i).getTitulo());
         }
-        System.out.print("><><><><><><><><><><><><><><><><><><><><><>\n");
     }
 
     // Metodo criado para capturar a posição do Livro Comum que o usuario deseja
